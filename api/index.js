@@ -1,4 +1,4 @@
-// api/index.ts
+// server/serverless.ts
 import express from "express";
 import dotenv from "dotenv";
 
@@ -650,7 +650,7 @@ router3.post(
 );
 var uploadRoutes_default = router3;
 
-// api/index.ts
+// server/serverless.ts
 dotenv.config();
 var app = express();
 app.use(express.json({ limit: "50mb" }));
@@ -741,7 +741,7 @@ app.get(["/api/health", "/health", "/api"], (req, res) => {
     timestamp: (/* @__PURE__ */ new Date()).toISOString()
   });
 });
-var index_default = app;
+var serverless_default = app;
 export {
-  index_default as default
+  serverless_default as default
 };

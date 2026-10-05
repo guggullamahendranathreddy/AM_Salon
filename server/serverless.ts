@@ -1,9 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
-import { connectDB } from "../server/db";
-import authRoutes from "../server/routes/authRoutes";
-import blogRoutes from "../server/routes/blogRoutes";
-import uploadRoutes from "../server/routes/uploadRoutes";
+import { connectDB } from "./db";
+import authRoutes from "./routes/authRoutes";
+import blogRoutes from "./routes/blogRoutes";
+import uploadRoutes from "./routes/uploadRoutes";
 
 dotenv.config();
 
