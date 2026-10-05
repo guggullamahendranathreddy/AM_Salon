@@ -127,9 +127,15 @@ import authRoutes from "./server/routes/authRoutes";
 import blogRoutes from "./server/routes/blogRoutes";
 import uploadRoutes from "./server/routes/uploadRoutes";
 
+// Support both /api/* and /* for local & Vercel serverless function routing
 app.use("/api/auth", authRoutes);
+app.use("/auth", authRoutes);
+
 app.use("/api/blogs", blogRoutes);
+app.use("/blogs", blogRoutes);
+
 app.use("/api/upload", uploadRoutes);
+app.use("/upload", uploadRoutes);
 
 
 

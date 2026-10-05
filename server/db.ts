@@ -1,12 +1,14 @@
 import dns from "node:dns";
 import mongoose from "mongoose";
 
-// Configure reliable DNS servers for MongoDB Atlas SRV records on Windows/local networks
-try {
-  dns.setDefaultResultOrder("ipv4first");
-  dns.setServers(["8.8.8.8", "1.1.1.1"]);
-} catch {
-  // Fallback to default if restricted
+// Configure reliable DNS servers for MongoDB Atlas SRV records on local Windows networks
+if (!process.env.VERCEL) {
+  try {
+    dns.setDefaultResultOrder("ipv4first");
+    dns.setServers(["8.8.8.8", "1.1.1.1"]);
+  } catch {
+    // Fallback to default if restricted
+  }
 }
 
 let isConnected = false;
