@@ -339,7 +339,8 @@ export default function BlogAdmin({
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@amsalon.com"
+                placeholder="Enter admin email"
+                autoComplete="off"
                 className="w-full rounded-sm border border-secondary/30 bg-bg-dark px-4 py-2.5 text-sm text-luxury-cream placeholder:text-luxury-cream/40 focus:border-secondary focus:outline-none"
                 required
               />
@@ -354,12 +355,10 @@ export default function BlogAdmin({
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter password"
+                autoComplete="current-password"
                 className="w-full rounded-sm border border-secondary/30 bg-bg-dark px-4 py-2.5 text-sm text-luxury-cream placeholder:text-luxury-cream/40 focus:border-secondary focus:outline-none"
                 required
               />
-              <p className="text-[11px] text-luxury-cream/50 mt-1">
-                Passcode fallback: <code className="text-secondary font-mono">amsalon123</code>
-              </p>
             </div>
 
             {loginError && (

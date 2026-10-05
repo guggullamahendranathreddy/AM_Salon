@@ -145,7 +145,18 @@ export async function loginAdmin(email: string, password: string): Promise<Login
       body: JSON.stringify({ email: email.trim(), password }),
     });
 
-    const data = await res.json();
+    let data: any = {};
+    try {
+      data = await res.json();
+    } catch {
+      return {
+        success: false,
+        error: res.status >= 500
+          ? "Server error. Please verify backend service and database connection."
+          : `Request failed with status ${res.status}`,
+      };
+    }
+
     if (!res.ok) {
       return {
         success: false,
@@ -161,7 +172,7 @@ export async function loginAdmin(email: string, password: string): Promise<Login
     };
   } catch (err: unknown) {
     const errorMsg = err instanceof Error ? err.message : "Network error";
-    return { success: false, error: `Connection failed: ${errorMsg}` };
+    return { success: false, error: `Connection error: ${errorMsg}` };
   }
 }
 
