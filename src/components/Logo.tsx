@@ -1,5 +1,5 @@
 import React from "react";
-import akshaiLogo from "../assets/akshai-logo.jpeg";
+import amSalonLogo from "../assets/am-salon-logo.jpeg";
 
 interface LogoProps {
   className?: string;
@@ -26,7 +26,7 @@ export default function Logo({ className = "", size = "md" }: LogoProps) {
       <div className={`relative ${sizes[size]} shrink-0 flex items-center justify-center`}>
         <span className="absolute -inset-1 rounded-full bg-gradient-to-br from-secondary/35 via-accent/20 to-primary/30 blur-md opacity-80" />
         <img
-          src={akshaiLogo}
+          src={amSalonLogo}
           alt="AM Unisex Salon logo"
           className="relative h-full w-full rounded-full object-cover ring-1 ring-secondary/55 shadow-[0_8px_28px_rgba(8,7,6,0.55)]"
           loading={size === "xl" ? "eager" : "lazy"}

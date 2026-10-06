@@ -19,7 +19,7 @@ export default function SEOSchema() {
         "@id": "https://am-salon-three.vercel.app/#hairsalon",
         "name": "AM Unisex Salon",
         "url": "https://am-salon-three.vercel.app/",
-        "logo": "https://am-salon-three.vercel.app/images/akshai-logo.jpeg",
+        "logo": "https://am-salon-three.vercel.app/images/am-salon-logo.jpeg",
         "image": [
           "https://am-salon-three.vercel.app/images/reception-01.webp",
           "https://am-salon-three.vercel.app/images/hair-wash-station-01.webp",

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { X, ChevronLeft, ChevronRight, Phone, MessageSquare, BookOpen } from "lucide-react";
-import akshaiLogo from "../assets/akshai-logo.jpeg";
+import amSalonLogo from "../assets/am-salon-logo.jpeg";
 
 interface MenuBookModalProps {
   isOpen: boolean;
@@ -302,7 +302,7 @@ export default function MenuBookModal({ isOpen, onClose }: MenuBookModalProps) {
             Unisex &middot; Unlimited &middot; Unstoppable
           </p>
           <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full border border-amber-400/50 p-1 mb-5 shadow-2xl">
-            <img src={akshaiLogo} alt="AM Unisex Salon logo" className="w-full h-full rounded-full object-cover" />
+            <img src={amSalonLogo} alt="AM Unisex Salon logo" className="w-full h-full rounded-full object-cover" />
           </div>
           <div className="font-serif text-4xl text-amber-400 tracking-wider mb-1 font-bold">AM</div>
           <h2 className="font-serif text-2xl tracking-[0.3em] text-cream mb-3">SALON</h2>
