@@ -5,7 +5,7 @@
       "destination": "/api/index.js"
     },
     {
-      "source": "/((?!api/|robots\\.txt|sitemap\\.xml).*)",
+      "source": "/((?!api/|robots\\.txt|sitemap\\.xml|google.*\\.html).*)",
       "destination": "/index.html"
     }
   ]
