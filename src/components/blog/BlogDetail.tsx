@@ -436,7 +436,7 @@ export default function BlogDetail({
             Ready to Experience This Transformation?
           </h3>
           <p className="font-body text-sm sm:text-base text-luxury-cream/75 max-w-xl mx-auto mb-6">
-            Consult directly with our master stylists and skin therapists at AM Unisex Salon, Nallagandla, Hyderabad. We design customized sessions tailored precisely to your hair texture and skin goals.
+            Consult directly with our master stylists and skin therapists at AM Unisex Salon, Pragathi Nagar, Hyderabad. We design customized sessions tailored precisely to your hair texture and skin goals.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button

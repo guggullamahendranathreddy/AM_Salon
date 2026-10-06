@@ -25,7 +25,7 @@ export default function OffersAndFaqs() {
               Frequently Asked <span className="text-gradient">Questions</span>
             </h2>
             <p className="text-xs sm:text-sm text-luxury-cream/70 leading-relaxed font-body font-light mb-8">
-              Find genuine answers to common questions about AM Unisex Salon in Nallagandla, Hyderabad, including services for men and women, booking, opening hours, parking, and specialty hair therapies.
+              Find genuine answers to common questions about AM Unisex Salon in Pragathi Nagar, Hyderabad, including services for men and women, booking, opening hours, parking, and specialty hair therapies.
             </p>
 
             {/* Accordion Cluster */}

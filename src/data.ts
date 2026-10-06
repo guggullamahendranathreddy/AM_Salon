@@ -288,7 +288,7 @@ export const FAQS: FAQItem[] = [
   {
     id: "f1",
     question: "Where is AM Unisex Salon located?",
-    answer: "AM Unisex Salon is conveniently located at Plot No 87&88, Block B 201, HYTEK ARCADE, Kancha Gacchibowli Road, Nallagandla, Serilingampalle, Hyderabad, Telangana 500046, India.",
+    answer: "AM Unisex Salon is conveniently located Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India.",
   },
   {
     id: "f2",
@@ -318,7 +318,7 @@ export const FAQS: FAQItem[] = [
   {
     id: "f7",
     question: "Is secure four-wheeler and two-wheeler parking available?",
-    answer: "Yes, convenient parking space is available for both two-wheelers and family cars at HYTEK ARCADE on Kancha Gacchibowli Road, Nallagandla.",
+    answer: "Yes, convenient parking space is available for both two-wheelers and family cars near Shiva Medicals, Pragathi Nagar.",
   },
   {
     id: "f8",

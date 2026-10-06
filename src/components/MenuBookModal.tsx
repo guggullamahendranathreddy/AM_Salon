@@ -309,7 +309,7 @@ export default function MenuBookModal({ isOpen, onClose }: MenuBookModalProps) {
           <div className="w-14 h-[1px] bg-amber-400/40 my-3" />
           <p className="font-serif italic text-base text-cream-dim mb-6">The Service Edit</p>
           <p className="text-[10px] tracking-[0.2em] uppercase text-cream-dim">
-            Nallagandla, Hyderabad &middot; Est. 2018
+            Pragathi Nagar, Hyderabad &middot; Est. 2018
           </p>
           <button
             onClick={() => goTo(1)}
@@ -470,10 +470,10 @@ export default function MenuBookModal({ isOpen, onClose }: MenuBookModalProps) {
           <p className="text-[9px] tracking-widest uppercase text-cream-dim mb-1">Find Us</p>
           <p className="text-cream font-medium">AM Unisex Salon</p>
           <p className="text-cream-dim text-[11px] leading-relaxed">
-            Plot No 87&amp;88, Block B 201, HYTEK ARCADE, Kancha Gacchibowli Road, Nallagandla, Serilingampalle, Hyderabad, Telangana 500046, India
+            Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India
           </p>
           <a
-            href="https://www.google.com/maps/search/?api=1&query=Plot+No+87%2688,+Block+B+201,+HYTEK+ARCADE,+Kancha+Gacchibowli+Road,+Nallagandla,+Serilingampalle,+Hyderabad,+Telangana+500046"
+            href="https://www.google.com/maps/search/?api=1&query=Akshai+Unisex+Salon,+Near+Shiva+Medicals,+3rd+Layout,+Pragathi+Nagar,+Hyderabad,+Telangana+500090"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block mt-1 text-[11px] text-amber-400 underline decoration-dotted"

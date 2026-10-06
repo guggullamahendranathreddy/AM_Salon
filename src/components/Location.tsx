@@ -7,11 +7,11 @@ interface LocationProps {
 
 export default function Location({ onBookClick }: LocationProps) {
   const addressString =
-    "Plot No 87&88, Block B 201, HYTEK ARCADE, Kancha Gacchibowli Road, Nallagandla, Serilingampalle, Hyderabad, Telangana 500046, India";
+    "Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India";
   const googleMapsUrl =
-    "https://www.google.com/maps/search/?api=1&query=Plot+No+87%2688,+Block+B+201,+HYTEK+ARCADE,+Kancha+Gacchibowli+Road,+Nallagandla,+Serilingampalle,+Hyderabad,+Telangana+500046";
+    "https://www.google.com/maps/search/?api=1&query=Akshai+Unisex+Salon,+Near+Shiva+Medicals,+3rd+Layout,+Pragathi+Nagar,+Hyderabad,+Telangana+500090";
   const googleMapsEmbedUrl =
-    "https://maps.google.com/maps?q=Plot+No+87%2688,+Block+B+201,+HYTEK+ARCADE,+Kancha+Gacchibowli+Road,+Nallagandla,+Serilingampalle,+Hyderabad,+Telangana+500046&t=&z=15&ie=UTF8&iwloc=&output=embed";
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.8105574518427!2d78.3892702!3d17.5165991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91c53e8e2d45%3A0xc3b8a3db4cf8dd77!2sAkshai%20Unisex%20Salon!5e0!3m2!1sen!2sin!4v1700000000000";
 
   return (
     <section id="contact" className="relative py-20 bg-bg-dark border-t border-primary/20 overflow-hidden">
@@ -30,7 +30,7 @@ export default function Location({ onBookClick }: LocationProps) {
             Visit <span className="text-gradient">AM Unisex Salon in Hyderabad</span>
           </h2>
           <p className="text-xs sm:text-sm text-luxury-cream/70 leading-relaxed font-body font-light">
-            Conveniently located at HYTEK ARCADE on Kancha Gacchibowli Road in Nallagandla. We welcome walk-in guests and scheduled appointments 7 days a week.
+            Conveniently located Near Shiva Medicals, 3rd Layout in Pragathi Nagar. We welcome walk-in guests and scheduled appointments 7 days a week.
           </p>
         </div>
 
@@ -48,7 +48,7 @@ export default function Location({ onBookClick }: LocationProps) {
                   AM Unisex Salon
                 </h3>
                 <p className="text-xs text-secondary font-semibold font-body uppercase tracking-wider mt-0.5">
-                  Unisex Family Salon &bull; Nallagandla, Hyderabad
+                  Unisex Family Salon &bull; Pragathi Nagar, Hyderabad
                 </p>
               </div>
 
@@ -145,7 +145,7 @@ export default function Location({ onBookClick }: LocationProps) {
           <div className="lg:col-span-7 rounded-lg overflow-hidden border border-white/10 bg-bg-charcoal shadow-2xl relative min-h-[360px] flex flex-col">
             <div className="p-3 bg-bg-dark/90 border-b border-white/5 flex items-center justify-between px-4 text-xs">
               <span className="text-luxury-cream/80 font-body flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-secondary" /> HYTEK ARCADE, Nallagandla, Hyderabad
+                <MapPin className="w-3.5 h-3.5 text-secondary" /> Near Shiva Medicals, Pragathi Nagar, Hyderabad
               </span>
               <a
                 href={googleMapsUrl}
@@ -159,7 +159,7 @@ export default function Location({ onBookClick }: LocationProps) {
 
             <div className="relative flex-1 w-full min-h-[320px]">
               <iframe
-                title="AM Unisex Salon Google Map Location - HYTEK ARCADE Nallagandla Hyderabad"
+                title="AM Unisex Salon Google Map Location - Near Shiva Medicals Pragathi Nagar Hyderabad"
                 src={googleMapsEmbedUrl}
                 className="w-full h-full border-none min-h-[320px]"
                 loading="lazy"

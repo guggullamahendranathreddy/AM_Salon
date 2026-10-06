@@ -113,14 +113,14 @@ export default function About() {
               transition={{ duration: 0.6 }}
             >
               <span className="text-secondary text-xs uppercase font-body tracking-[0.25em] font-semibold flex items-center gap-2 mb-2">
-                <Sparkle className="w-3 h-3 text-secondary" /> Estd. 2018 &middot; Nallagandla, Hyderabad
+                <Sparkle className="w-3 h-3 text-secondary" /> Estd. 2018 &middot; Pragathi Nagar, Hyderabad
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white tracking-tight leading-tight mb-6">
                 Why Choose <span className="text-gradient">AM Unisex Salon?</span>
               </h2>
 
               <p className="text-sm md:text-base text-luxury-cream/70 font-body leading-relaxed mb-4 font-light">
-                AM Unisex Salon is a premier unisex salon in Hyderabad located at HYTEK ARCADE on Kancha Gacchibowli Road, Nallagandla. We provide professional hair, beauty, and grooming services for both men and women under one roof, combining master stylists with clinical-grade hygiene and welcoming hospitality.
+                AM Unisex Salon is a premier unisex salon in Hyderabad located Near Shiva Medicals, 3rd Layout, Pragathi Nagar. We provide professional hair, beauty, and grooming services for both men and women under one roof, combining master stylists with clinical-grade hygiene and welcoming hospitality.
               </p>
               <p className="text-sm md:text-base text-luxury-cream/70 font-body leading-relaxed mb-6 font-light">
                 Whether you need a precision haircut for men, women&apos;s layer styling, revitalizing hair spa, Pro-Keratin smoothing, Molecular Hair Botox, or rejuvenating Vedic skin facials, our team ensures every visit leaves you looking and feeling your absolute best.

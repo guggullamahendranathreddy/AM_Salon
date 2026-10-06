@@ -5,7 +5,7 @@ import { GALLERY_ITEMS } from "../data";
 
 // Descriptive alt texts for Image SEO (Requirement 14)
 const GALLERY_ALT_TEXTS: Record<string, string> = {
-  g1: "AM Unisex Salon entrance sign in Nallagandla Hyderabad",
+  g1: "AM Unisex Salon entrance sign in Pragathi Nagar Hyderabad",
   g2: "AM Unisex Salon interior styling stations in Hyderabad",
   g3: "AM Unisex Salon reception and customer waiting lounge in Hyderabad",
   g4: "Luxury hair wash and hair spa stations at AM Unisex Salon",
@@ -186,7 +186,7 @@ export default function Gallery() {
                       {GALLERY_ITEMS[selectedPhoto].title}
                     </p>
                     <p className="text-[11px] text-luxury-cream/60 font-body">
-                      AM Unisex Salon, Nallagandla, Hyderabad
+                      AM Unisex Salon, Pragathi Nagar, Hyderabad
                     </p>
                   </div>
                   <span className="font-mono text-secondary text-xs">

@@ -83,11 +83,11 @@ const PAGE_SEO_MAP: Record<string, { title: string; description: string; path: s
   services: {
     title: "Salon Services in Hyderabad | AM Unisex Salon",
     description:
-      "Explore hair styling, haircuts for men & women, hair botox, keratin, facials and bridal grooming at AM Unisex Salon in Nallagandla, Hyderabad.",
+      "Explore hair styling, haircuts for men & women, hair botox, keratin, facials and bridal grooming at AM Unisex Salon in Pragathi Nagar, Hyderabad.",
     path: "/services",
   },
   about: {
-    title: "About Us | AM Unisex Salon Nallagandla Hyderabad",
+    title: "About Us | AM Unisex Salon Pragathi Nagar Hyderabad",
     description:
       "Learn about AM Unisex Salon, Hyderabad's trusted family salon offering hygienic haircuts, premium beauty treatments, and experienced stylists.",
     path: "/about",
@@ -101,13 +101,13 @@ const PAGE_SEO_MAP: Record<string, { title: string; description: string; path: s
   booking: {
     title: "Book Salon Appointment | AM Unisex Salon Hyderabad",
     description:
-      "Book an appointment online at AM Unisex Salon in Nallagandla, Hyderabad. Haircuts, hair spa, facials and grooming with instant WhatsApp confirmation.",
+      "Book an appointment online at AM Unisex Salon in Pragathi Nagar, Hyderabad. Haircuts, hair spa, facials and grooming with instant WhatsApp confirmation.",
     path: "/booking",
   },
   contact: {
-    title: "Contact AM Unisex Salon | Nallagandla Hyderabad",
+    title: "Contact AM Unisex Salon | Pragathi Nagar Hyderabad",
     description:
-      "Visit AM Unisex Salon at HYTEK ARCADE, Kancha Gacchibowli Road, Nallagandla, Hyderabad. Call +91 75699 79965 or visit Monday–Sunday 9 AM–9 PM.",
+      "Visit AM Unisex Salon Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad. Call +91 75699 79965 or visit Monday–Sunday 9 AM–9 PM.",
     path: "/contact",
   },
   blog: {

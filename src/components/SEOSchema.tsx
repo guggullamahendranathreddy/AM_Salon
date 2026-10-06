@@ -29,10 +29,10 @@ export default function SEOSchema() {
         "priceRange": "$$",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Plot No 87&88, Block B 201, HYTEK ARCADE, Kancha Gacchibowli Road, Nallagandla",
-          "addressLocality": "Serilingampalle",
+          "streetAddress": "Near Shiva Medicals, 3rd Layout, Pragathi Nagar",
+          "addressLocality": "Pragathi Nagar",
           "addressRegion": "Telangana",
-          "postalCode": "500046",
+          "postalCode": "500090",
           "addressCountry": "IN"
         },
         "openingHoursSpecification": [

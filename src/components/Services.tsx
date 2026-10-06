@@ -39,7 +39,7 @@ export default function Services({ onServiceSelect }: ServicesProps) {
             Our Salon <span className="text-gradient">Services</span>
           </h2>
           <p className="text-xs sm:text-sm text-luxury-cream/70 leading-relaxed font-body font-light">
-            Indulge in tailored salon treatments engineered with international professional products and master care at AM Unisex Salon, Nallagandla, Hyderabad.
+            Indulge in tailored salon treatments engineered with international professional products and master care at AM Unisex Salon, Pragathi Nagar, Hyderabad.
           </p>
         </div>
 
