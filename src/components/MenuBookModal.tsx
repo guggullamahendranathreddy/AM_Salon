@@ -473,7 +473,7 @@ export default function MenuBookModal({ isOpen, onClose }: MenuBookModalProps) {
             Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India
           </p>
           <a
-            href="https://www.google.com/maps/search/?api=1&query=Akshai+Unisex+Salon,+Near+Shiva+Medicals,+3rd+Layout,+Pragathi+Nagar,+Hyderabad,+Telangana+500090"
+            href="https://maps.google.com/?cid=14103202395395251575"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block mt-1 text-[11px] text-amber-400 underline decoration-dotted"

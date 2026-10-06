@@ -35,6 +35,12 @@ export default function SEOSchema() {
           "postalCode": "500090",
           "addressCountry": "IN"
         },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 17.5165991,
+          "longitude": 78.3892702
+        },
+        "hasMap": "https://maps.google.com/?cid=14103202395395251575",
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",

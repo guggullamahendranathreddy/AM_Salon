@@ -9,7 +9,7 @@ export default function Location({ onBookClick }: LocationProps) {
   const addressString =
     "Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India";
   const googleMapsUrl =
-    "https://www.google.com/maps/search/?api=1&query=Akshai+Unisex+Salon,+Near+Shiva+Medicals,+3rd+Layout,+Pragathi+Nagar,+Hyderabad,+Telangana+500090";
+    "https://maps.google.com/?cid=14103202395395251575";
   const googleMapsEmbedUrl =
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.8105574518427!2d78.3892702!3d17.5165991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91c53e8e2d45%3A0xc3b8a3db4cf8dd77!2sAkshai%20Unisex%20Salon!5e0!3m2!1sen!2sin!4v1700000000000";
 
