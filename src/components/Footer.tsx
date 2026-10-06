@@ -23,18 +23,19 @@ export default function Footer({ onNavigate }: FooterProps = {}) {
   ];
 
   const quickLinks = [
-    { name: "Home", hash: "#home" },
-    { name: "Why Choose Us?", hash: "#about" },
-    { name: "Services Catalog", hash: "#services" },
-    { name: "Beauty & Hair Journal", hash: "#blog" },
-    { name: "Photographic Gallery", hash: "#gallery" },
-    { name: "Customer Testimonials", hash: "#reviews" },
-    { name: "Register Appointment", hash: "#book" },
+    { name: "AM Unisex Salon Home", hash: "#home" },
+    { name: "About AM Unisex Salon", hash: "#about" },
+    { name: "View Our Salon Services", hash: "#services" },
+    { name: "Hair Care & Beauty Blog", hash: "#blog" },
+    { name: "Salon Photo Gallery", hash: "#gallery" },
+    { name: "Customer Reviews", hash: "#reviews" },
+    { name: "Book an Appointment", hash: "#book" },
+    { name: "Contact AM Unisex Salon", hash: "#contact" },
     { name: "Admin Portal", hash: "#admin" },
   ];
 
   return (
-    <footer id="contact" className="relative bg-bg-dark border-t border-primary/20 pt-16 pb-8 text-luxury-cream/80 overflow-hidden select-none">
+    <footer className="relative bg-bg-dark border-t border-primary/20 pt-16 pb-8 text-luxury-cream/80 overflow-hidden select-none">
       
       {/* Decorative vertical bounds */}
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
@@ -164,8 +165,9 @@ export default function Footer({ onNavigate }: FooterProps = {}) {
                 <div className="flex items-start gap-2 text-luxury-cream/70">
                   <MapPin className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
                   <p className="leading-relaxed">
-                    Near Shiva Medicals, 3rd Layout,<br />
-                    Pragathi Nagar, Hyderabad, Telangana 500090, India
+                    Plot No 87&amp;88, Block B 201, HYTEK ARCADE,<br />
+                    Kancha Gacchibowli Road, Nallagandla,<br />
+                    Serilingampalle, Hyderabad, Telangana 500046, India
                   </p>
                 </div>
                 
@@ -186,8 +188,8 @@ export default function Footer({ onNavigate }: FooterProps = {}) {
             {/* Google Map Mini Embed */}
             <div className="w-full h-32 rounded-sm overflow-hidden border border-white/5 bg-bg-charcoal group shadow-inner relative">
               <iframe
-                title="AM Unisex Salon Google Map Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.8105574518427!2d78.3892702!3d17.5165991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91c53e8e2d45%3A0xc3b8a3db4cf8dd77!2sAkshai%20Unisex%20Salon!5e0!3m2!1sen!2sin!4v1700000000000"
+                title="AM Unisex Salon Google Map Location - Nallagandla Hyderabad"
+                src="https://maps.google.com/maps?q=Plot+No+87%2688,+Block+B+201,+HYTEK+ARCADE,+Kancha+Gacchibowli+Road,+Nallagandla,+Serilingampalle,+Hyderabad,+Telangana+500046&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 className="w-full h-full border-none filter invert contrast-110 opacity-70 group-hover:opacity-100 transition-opacity"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -206,7 +208,7 @@ export default function Footer({ onNavigate }: FooterProps = {}) {
           
           <div className="text-center sm:text-left">
             <p className="text-xs text-luxury-cream/40">
-              © 2026 AM Unisex Salon. Near Shiva Medicals, Pragathi Nagar, Hyderabad. All Rights Reserved.
+              &copy; 2026 AM Unisex Salon. HYTEK ARCADE, Nallagandla, Hyderabad. All Rights Reserved.
             </p>
             <p className="text-[10px] text-accent mt-1 tracking-wide uppercase font-semibold">
               Elegantly Handcrafted | Luxury Burgundy & Slate theme | Inspired by genuine branding

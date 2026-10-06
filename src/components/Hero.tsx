@@ -17,28 +17,31 @@ interface HeroProps {
   onServicesClick: () => void;
 }
 
-export default function Hero({ onBookClick }: HeroProps) {
+export default function Hero({ onBookClick, onServicesClick }: HeroProps) {
   const slides = [
     {
       image: LOCAL_ASSETS.salonInteriorMain,
-      title: "Elevate Your Style",
-      label: "AM UNISEX SALON",
+      title: "AM Unisex Salon – Premium Unisex Salon in Hyderabad",
+      label: "AM UNISEX SALON • HYDERABAD",
       subTitle:
-        "Experience Pragathi Nagar's ultimate luxury destination for complete beauty transformations.",
+        "Experience Hyderabad's premier destination in Nallagandla for luxury haircuts, restorative hair spa, skin facials, and grooming.",
+      alt: "AM Unisex Salon interior reception lounge in Hyderabad",
     },
     {
       image: LOCAL_ASSETS.hairWashSpa,
-      title: "Holistic Restorative Care",
+      title: "Restorative Hair Spa & Botox Care",
       label: "HAIR SPA & BOTOX SPECIALTY",
       subTitle:
-        "Reinvigorate dull, fatigued strands with world-class deep nourishing keratin and botox systems.",
+        "Reinvigorate dull, fatigued strands with world-class deep nourishing keratin, molecular botox, and hair spa therapies.",
+      alt: "Luxury hair wash and hair spa stations at AM Unisex Salon Hyderabad",
     },
     {
       image: LOCAL_ASSETS.skinCareRoom,
-      title: "Bespoke Radiance Facials",
+      title: "Bespoke Radiance Skin Facials",
       label: "GLOW & SKIN DERMATOLOGY",
       subTitle:
-        "Indulge in organic botanical glow treatments and micro-steam purifiers tailored for sensitive skin.",
+        "Indulge in botanical glow facials, clarifying cleanups, and gentle skincare tailored for men and women.",
+      alt: "Private skin care and facial treatment room at AM Unisex Salon Hyderabad",
     },
   ];
 
@@ -72,7 +75,7 @@ export default function Hero({ onBookClick }: HeroProps) {
           >
             <img
               src={slides[currentIndex].image}
-              alt={slides[currentIndex].title}
+              alt={slides[currentIndex].alt || "AM Unisex Salon Hyderabad"}
               className="h-full w-full object-cover object-center scale-[1.02]"
               loading={currentIndex === 0 ? "eager" : "lazy"}
               decoding="async"
@@ -105,11 +108,11 @@ export default function Hero({ onBookClick }: HeroProps) {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.8 }}
-            className="mb-5 font-display text-4xl font-bold leading-[1.08] text-white sm:mb-6 sm:text-5xl md:text-6xl lg:text-7xl"
+            className="mb-5 font-display text-3xl font-bold leading-[1.1] text-white sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl"
           >
-            <span className="text-gradient block">{slides[currentIndex].title}</span>
-            <span className="mt-3 block font-body text-sm font-semibold uppercase tracking-widest text-luxury-cream/80 sm:text-base md:text-xl">
-              Luxury Hair | Beauty | Grooming
+            AM Unisex Salon – <span className="text-gradient">Premium Unisex Salon in Hyderabad</span>
+            <span className="mt-3 block font-body text-xs font-semibold uppercase tracking-widest text-luxury-cream/80 sm:text-sm md:text-lg">
+              Professional Haircuts • Hair Spa • Facials • Men & Women Grooming in Nallagandla
             </span>
           </motion.h1>
 
@@ -121,7 +124,7 @@ export default function Hero({ onBookClick }: HeroProps) {
           >
             {slides[currentIndex].subTitle}
             <span className="mt-1 block font-medium text-accent">
-              Professional Family Salon in Pragathi Nagar, Hyderabad. Since 2018.
+              HYTEK ARCADE, Kancha Gacchibowli Road, Nallagandla, Serilingampalle, Hyderabad.
             </span>
           </motion.p>
 
@@ -134,14 +137,27 @@ export default function Hero({ onBookClick }: HeroProps) {
             <button
               onClick={onBookClick}
               className="cursor-pointer rounded-sm bg-gradient-to-r from-primary to-secondary px-6 py-3.5 text-center text-xs font-semibold uppercase tracking-wider text-white shadow-[0_4px_20px_rgba(215,177,93,0.24)] transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_8px_25px_rgba(215,177,93,0.35)] sm:px-8 sm:py-4 md:text-sm"
+              aria-label="Book an appointment at AM Unisex Salon"
             >
-              Book Appointment
+              Book an Appointment
             </button>
+            <a
+              href="#services"
+              onClick={(e) => {
+                e.preventDefault();
+                onServicesClick();
+              }}
+              className="flex items-center justify-center gap-2 rounded-sm border border-secondary/40 bg-bg-charcoal/86 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-luxury-cream backdrop-blur-sm transition-all duration-300 hover:-translate-y-[2px] hover:border-secondary hover:text-white sm:px-8 sm:py-4 md:text-sm"
+              aria-label="View our salon services"
+            >
+              View Our Salon Services
+            </a>
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 rounded-sm border border-white/10 bg-bg-charcoal/86 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-luxury-cream backdrop-blur-sm transition-all duration-300 hover:-translate-y-[2px] hover:border-secondary/45 sm:px-8 sm:py-4 md:text-sm"
+              aria-label="Inquire with AM Unisex Salon on WhatsApp"
             >
               <MessageSquare className="h-4 w-4 text-[#25D366]" />
               Inquire via WhatsApp

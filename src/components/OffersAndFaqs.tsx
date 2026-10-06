@@ -21,11 +21,11 @@ export default function OffersAndFaqs() {
             <span className="text-secondary text-xs uppercase font-body tracking-[0.3em] font-semibold flex items-center gap-2 mb-2">
               <HelpCircle className="w-3.5 h-3.5 text-secondary" /> Salon FAQs
             </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight mt-1 mb-4 leading-none">
-              Client Frequently Asked <span className="text-gradient">Questions</span>
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight mt-1 mb-4 leading-tight">
+              Frequently Asked <span className="text-gradient">Questions</span>
             </h2>
-            <p className="text-xs sm:text-sm text-luxury-cream/60 leading-relaxed font-body font-light mb-8">
-              Got queries? Check out official details regarding appointments, our clinical-grade salon hygiene, customer parking, and custom makeup consulting.
+            <p className="text-xs sm:text-sm text-luxury-cream/70 leading-relaxed font-body font-light mb-8">
+              Find genuine answers to common questions about AM Unisex Salon in Nallagandla, Hyderabad, including services for men and women, booking, opening hours, parking, and specialty hair therapies.
             </p>
 
             {/* Accordion Cluster */}

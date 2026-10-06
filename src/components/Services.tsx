@@ -31,16 +31,80 @@ export default function Services({ onServiceSelect }: ServicesProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         
         {/* Section Title header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="text-secondary text-xs uppercase font-body tracking-[0.3em] font-semibold">
-            Elegant Menu
+            Comprehensive Salon Menu
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight mt-2 mb-4">
-            Our Premium <span className="text-gradient">Services & Therapies</span>
+            Our Salon <span className="text-gradient">Services</span>
           </h2>
-          <p className="text-xs sm:text-sm text-luxury-cream/60 leading-relaxed font-body font-light">
-            Indulge in tailored treatments engineered with luxury products and professional care, delivering instant aesthetic results.
+          <p className="text-xs sm:text-sm text-luxury-cream/70 leading-relaxed font-body font-light">
+            Indulge in tailored salon treatments engineered with international professional products and master care at AM Unisex Salon, Nallagandla, Hyderabad.
           </p>
+        </div>
+
+        {/* Structured SEO Overview Pillars */}
+        <div className="grid md:grid-cols-2 gap-4 mb-10 max-w-4xl mx-auto">
+          <div className="p-5 rounded-lg bg-bg-dark/80 border border-white/5 flex flex-col justify-between">
+            <div>
+              <span className="text-secondary text-[10px] uppercase font-bold tracking-widest font-body">Hair Care Specialty</span>
+              <h2 className="text-lg sm:text-xl font-display font-bold text-white tracking-tight mt-1 mb-2">
+                Hair Services for Men &amp; Women
+              </h2>
+              <p className="text-xs text-luxury-cream/65 leading-relaxed font-body font-light mb-4">
+                Tailored haircuts for men and women, beard sculpting, root touch-ups, global coloring, restorative Pro-Keratin protein therapies, and Molecular Hair Botox treatments in Hyderabad.
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setActiveTab("men")}
+                className="text-[10px] uppercase tracking-wider font-semibold text-secondary hover:text-white transition-colors"
+              >
+                Men&apos;s Cuts &rarr;
+              </button>
+              <span className="text-white/20">&bull;</span>
+              <button
+                onClick={() => setActiveTab("women")}
+                className="text-[10px] uppercase tracking-wider font-semibold text-secondary hover:text-white transition-colors"
+              >
+                Women&apos;s Styling &rarr;
+              </button>
+              <span className="text-white/20">&bull;</span>
+              <button
+                onClick={() => setActiveTab("hair")}
+                className="text-[10px] uppercase tracking-wider font-semibold text-secondary hover:text-white transition-colors"
+              >
+                Hair Treatments &rarr;
+              </button>
+            </div>
+          </div>
+
+          <div className="p-5 rounded-lg bg-bg-dark/80 border border-white/5 flex flex-col justify-between">
+            <div>
+              <span className="text-accent text-[10px] uppercase font-bold tracking-widest font-body">Skin &amp; Aesthetics</span>
+              <h2 className="text-lg sm:text-xl font-display font-bold text-white tracking-tight mt-1 mb-2">
+                Beauty &amp; Grooming Services
+              </h2>
+              <p className="text-xs text-luxury-cream/65 leading-relaxed font-body font-light mb-4">
+                Rejuvenating Vedic radiance facials, oxygen skin clarifying, instant glow cleanups, gentle de-tan therapy, manicure, pedicure, and high-definition bridal and groom portfolios.
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setActiveTab("skin")}
+                className="text-[10px] uppercase tracking-wider font-semibold text-accent hover:text-white transition-colors"
+              >
+                Skin Care &rarr;
+              </button>
+              <span className="text-white/20">&bull;</span>
+              <button
+                onClick={() => setActiveTab("bridal")}
+                className="text-[10px] uppercase tracking-wider font-semibold text-accent hover:text-white transition-colors"
+              >
+                Bridal Makeovers &rarr;
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Tab Selection Row (Sliding Pill Design) */}

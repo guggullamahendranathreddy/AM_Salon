@@ -304,12 +304,12 @@ export default function MenuBookModal({ isOpen, onClose }: MenuBookModalProps) {
           <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full border border-amber-400/50 p-1 mb-5 shadow-2xl">
             <img src={akshaiLogo} alt="AM Unisex Salon logo" className="w-full h-full rounded-full object-cover" />
           </div>
-          <h1 className="font-serif text-4xl text-amber-400 tracking-wider mb-1">AM</h1>
+          <div className="font-serif text-4xl text-amber-400 tracking-wider mb-1 font-bold">AM</div>
           <h2 className="font-serif text-2xl tracking-[0.3em] text-cream mb-3">SALON</h2>
           <div className="w-14 h-[1px] bg-amber-400/40 my-3" />
           <p className="font-serif italic text-base text-cream-dim mb-6">The Service Edit</p>
           <p className="text-[10px] tracking-[0.2em] uppercase text-cream-dim">
-            Pragathi Nagar, Hyderabad &middot; Est. 2018
+            Nallagandla, Hyderabad &middot; Est. 2018
           </p>
           <button
             onClick={() => goTo(1)}
@@ -470,10 +470,10 @@ export default function MenuBookModal({ isOpen, onClose }: MenuBookModalProps) {
           <p className="text-[9px] tracking-widest uppercase text-cream-dim mb-1">Find Us</p>
           <p className="text-cream font-medium">AM Unisex Salon</p>
           <p className="text-cream-dim text-[11px] leading-relaxed">
-            Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090
+            Plot No 87&amp;88, Block B 201, HYTEK ARCADE, Kancha Gacchibowli Road, Nallagandla, Serilingampalle, Hyderabad, Telangana 500046, India
           </p>
           <a
-            href="https://maps.google.com/?q=Akshai+Unisex+Salon+Near+Shiva+Medicals+3rd+Layout+Pragathi+Nagar+Hyderabad+Telangana+500090"
+            href="https://www.google.com/maps/search/?api=1&query=Plot+No+87%2688,+Block+B+201,+HYTEK+ARCADE,+Kancha+Gacchibowli+Road,+Nallagandla,+Serilingampalle,+Hyderabad,+Telangana+500046"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block mt-1 text-[11px] text-amber-400 underline decoration-dotted"

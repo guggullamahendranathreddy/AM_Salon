@@ -287,33 +287,43 @@ export const SPECIAL_OFFERS: OfferItem[] = [
 export const FAQS: FAQItem[] = [
   {
     id: "f1",
-    question: "Do I need to book an appointment in advance?",
-    answer: "While we gladly welcome walk-in guests based on chair availability, booking an appointment online or via WhatsApp guarantees you get paired with your favorite senior stylist right on your scheduled time.",
+    question: "Where is AM Unisex Salon located?",
+    answer: "AM Unisex Salon is conveniently located at Plot No 87&88, Block B 201, HYTEK ARCADE, Kancha Gacchibowli Road, Nallagandla, Serilingampalle, Hyderabad, Telangana 500046, India.",
   },
   {
     id: "f2",
-    question: "What specialty treatments do you offer for damaged hair?",
-    answer: "We are Pragathi Nagar's leading specialists in restorative therapies. This includes premium molecular Hair Botox (for shine and volume), signature Pro-Keratin Protein treatments, and deep-root conditioning Caviar Spas.",
+    question: "What are the opening hours?",
+    answer: "AM Unisex Salon is open all 7 days a week, Monday through Sunday, from 9:00 AM to 9:00 PM.",
   },
   {
     id: "f3",
-    question: "Who will handle my Bridal Makeup or Groom Care?",
-    answer: "Our Bridal and Groom makeup portfolios are exclusively curated by senior stylists Anjali Rao and Manish Kumar, using world-recognized high-definition and airbrush cosmetics.",
+    question: "Do you provide services for both men and women?",
+    answer: "Yes! AM Unisex Salon is a full-service unisex family salon. We have dedicated styling stations and private treatment rooms catering to men, women, and children.",
   },
   {
     id: "f4",
-    question: "Which major professional beauty product brands do you use?",
-    answer: "We put our clients' protective care first. We strictly use premium, genuine international formulas such as L'Oréal Professional, Matrix, Schwarzkopf, and specialized dermaceutics.",
+    question: "What hair services are available?",
+    answer: "We offer classic and modern haircuts for men and women, beard sculpting, hair wash and blow-dry styling, Pro-Keratin smoothing, Molecular Hair Botox, ammonia-free hair coloring, root touch-ups, and revitalizing hair spas.",
   },
   {
     id: "f5",
-    question: "Is secure four-wheeler and two-wheeler parking available?",
-    answer: "Yes, we have comfortable front parking space available for both two-wheelers and family cars near Shiva Medicals, Pragathi Nagar.",
+    question: "How can I book an appointment?",
+    answer: "You can book easily online through our website's booking form, call our reception directly at +91 75699 79965, or connect with us on WhatsApp for quick confirmation.",
   },
   {
     id: "f6",
-    question: "Is AM Unisex Salon a family-friendly salon?",
-    answer: "Absolutely! We are proud to operate a professional Unisex family environment with individual dedicated chairs and private facial chambers tailored for ladies, gentlemen, and kids.",
+    question: "What specialty treatments do you offer for damaged hair?",
+    answer: "We are Hyderabad's leading specialists in restorative hair therapies. Our treatments include molecular Hair Botox (for shine and volume), signature Pro-Keratin protein treatments, and deep-root conditioning Caviar Spas.",
+  },
+  {
+    id: "f7",
+    question: "Is secure four-wheeler and two-wheeler parking available?",
+    answer: "Yes, convenient parking space is available for both two-wheelers and family cars at HYTEK ARCADE on Kancha Gacchibowli Road, Nallagandla.",
+  },
+  {
+    id: "f8",
+    question: "Which major professional beauty product brands do you use?",
+    answer: "We strictly prioritize your hair and skin health. We use genuine international formulas such as L'Oréal Professional, Matrix, Schwarzkopf, and premium dermatological care brands.",
   },
 ];
 

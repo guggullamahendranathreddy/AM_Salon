@@ -84,7 +84,7 @@ export default function BlogList({
               </h1>
               
               <p className="font-body text-sm sm:text-base text-luxury-cream/70 leading-relaxed">
-                Expert tips, treatment guides, bridal roadmaps, and latest announcements directly from our master stylists and certified aesthetic practitioners at AM Unisex Salon, Pragathi Nagar, Hyderabad.
+                Expert tips, treatment guides, bridal roadmaps, and latest announcements directly from our master stylists and certified aesthetic practitioners at AM Unisex Salon, Nallagandla, Hyderabad.
               </p>
             </div>
 

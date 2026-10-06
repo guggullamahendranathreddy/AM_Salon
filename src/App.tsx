@@ -11,6 +11,7 @@ import Gallery from "./components/Gallery";
 import Reviews from "./components/Reviews";
 import OffersAndFaqs from "./components/OffersAndFaqs";
 import BookingForm from "./components/BookingForm";
+import Location from "./components/Location";
 import Footer from "./components/Footer";
 import FloatingFAB from "./components/FloatingFAB";
 
@@ -35,6 +36,93 @@ import {
 
 type AppView = "home" | "blog" | "blog-detail" | "admin";
 
+const BASE_CANONICAL_URL = "https://am-salon-three.vercel.app";
+
+function setMetaTag(name: string, content: string, isProperty = false) {
+  const selector = isProperty ? `meta[property="${name}"]` : `meta[name="${name}"]`;
+  let el = document.querySelector(selector) as HTMLMetaElement | null;
+  if (!el) {
+    el = document.createElement("meta");
+    if (isProperty) el.setAttribute("property", name);
+    else el.setAttribute("name", name);
+    document.head.appendChild(el);
+  }
+  el.content = content;
+}
+
+function setCanonicalTag(url: string) {
+  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!link) {
+    link = document.createElement("link");
+    link.rel = "canonical";
+    document.head.appendChild(link);
+  }
+  link.href = url;
+}
+
+export function updatePageSEO(title: string, description: string, path = "/") {
+  document.title = title;
+  setMetaTag("description", description);
+  const cleanPath = path === "/" ? "" : path.startsWith("/") ? path : `/${path}`;
+  const canonicalUrl = `${BASE_CANONICAL_URL}${cleanPath || "/"}`;
+  setCanonicalTag(canonicalUrl);
+  setMetaTag("og:title", title, true);
+  setMetaTag("og:description", description, true);
+  setMetaTag("og:url", canonicalUrl, true);
+  setMetaTag("twitter:title", title);
+  setMetaTag("twitter:description", description);
+}
+
+const PAGE_SEO_MAP: Record<string, { title: string; description: string; path: string }> = {
+  home: {
+    title: "AM Unisex Salon | Unisex Salon in Hyderabad",
+    description:
+      "AM Unisex Salon in Hyderabad offers professional haircuts, hair styling, hair spa, beauty and grooming services for men and women.",
+    path: "/",
+  },
+  services: {
+    title: "Salon Services in Hyderabad | AM Unisex Salon",
+    description:
+      "Explore hair styling, haircuts for men & women, hair botox, keratin, facials and bridal grooming at AM Unisex Salon in Nallagandla, Hyderabad.",
+    path: "/services",
+  },
+  about: {
+    title: "About Us | AM Unisex Salon Nallagandla Hyderabad",
+    description:
+      "Learn about AM Unisex Salon, Hyderabad's trusted family salon offering hygienic haircuts, premium beauty treatments, and experienced stylists.",
+    path: "/about",
+  },
+  gallery: {
+    title: "Salon Gallery | AM Unisex Salon Hyderabad",
+    description:
+      "View photos of AM Unisex Salon in Hyderabad, including modern hair styling stations, facial rooms, and hygienic salon interiors.",
+    path: "/gallery",
+  },
+  booking: {
+    title: "Book Salon Appointment | AM Unisex Salon Hyderabad",
+    description:
+      "Book an appointment online at AM Unisex Salon in Nallagandla, Hyderabad. Haircuts, hair spa, facials and grooming with instant WhatsApp confirmation.",
+    path: "/booking",
+  },
+  contact: {
+    title: "Contact AM Unisex Salon | Nallagandla Hyderabad",
+    description:
+      "Visit AM Unisex Salon at HYTEK ARCADE, Kancha Gacchibowli Road, Nallagandla, Hyderabad. Call +91 75699 79965 or visit Monday–Sunday 9 AM–9 PM.",
+    path: "/contact",
+  },
+  blog: {
+    title: "Hair Care & Beauty Blog | AM Unisex Salon Hyderabad",
+    description:
+      "Read expert hair care, beauty tips, and salon treatment guides from master stylists at AM Unisex Salon in Hyderabad.",
+    path: "/blog",
+  },
+  admin: {
+    title: "Admin Portal | AM Unisex Salon",
+    description: "Admin management portal for AM Unisex Salon.",
+    path: "/admin",
+  },
+};
+
 export default function App() {
   const [selectedService, setSelectedService] = useState("");
   const [currentView, setCurrentView] = useState<AppView>("home");
@@ -54,7 +142,6 @@ export default function App() {
         if (user) {
           setAdminUser(user);
         } else {
-          // Token expired or invalid
           setAdminToken(null);
           setAdminUser(null);
           localStorage.removeItem("am_auth_token");
@@ -63,24 +150,21 @@ export default function App() {
     }
   }, [adminToken]);
 
-  // Fetch blogs from real backend API (Public or Admin view)
+  // Fetch blogs from backend API
   const fetchPosts = useCallback(async () => {
     setIsLoadingPosts(true);
     try {
       if (adminToken) {
-        // Authenticated admin: load all posts (DRAFT, PUBLISHED)
         const adminArticles = await fetchAdminBlogs(adminToken);
         setPosts(adminArticles);
         return adminArticles;
       } else {
-        // Public customers: load only PUBLISHED posts
         const publicArticles = await fetchPublishedBlogs();
         setPosts(publicArticles);
         return publicArticles;
       }
     } catch (err) {
       console.error("Failed to load blog posts:", err);
-      // Fallback to public fetch if admin fetch fails
       const publicArticles = await fetchPublishedBlogs();
       setPosts(publicArticles);
       return publicArticles;
@@ -89,17 +173,24 @@ export default function App() {
     }
   }, [adminToken]);
 
-  // Synchronize hash routing on mount and hashchange
+  // Synchronize route and SEO on mount, hashchange, and popstate
   useEffect(() => {
-    const handleHashSync = async () => {
+    const handleRouteSync = async () => {
       const hash = window.location.hash;
+      const pathname = window.location.pathname.toLowerCase().replace(/\/$/, "");
 
-      if (hash === "#blog") {
+      if (hash === "#blog" || pathname === "/blog") {
         setCurrentView("blog");
         setSelectedBlog(null);
+        updatePageSEO(PAGE_SEO_MAP.blog.title, PAGE_SEO_MAP.blog.description, "/blog");
         window.scrollTo({ top: 0, behavior: "smooth" });
-      } else if (hash.startsWith("#blog/")) {
-        const slug = hash.replace("#blog/", "").trim();
+      } else if (hash.startsWith("#blog/") || pathname.startsWith("/blog/")) {
+        const slug = (
+          hash.startsWith("#blog/")
+            ? hash.replace("#blog/", "")
+            : pathname.replace("/blog/", "")
+        ).trim();
+
         let found: BlogArticle | BlogPost | null =
           posts.find(
             (p) =>
@@ -115,9 +206,14 @@ export default function App() {
         if (found) {
           setSelectedBlog(found);
           setCurrentView("blog-detail");
+          const postTitle = found.seo_title || `${found.title} | AM Unisex Salon`;
+          const postDesc =
+            found.seo_description ||
+            found.excerpt ||
+            `Read ${found.title} on AM Unisex Salon blog.`;
+          updatePageSEO(postTitle, postDesc, `/blog/${slug}`);
           window.scrollTo({ top: 0, behavior: "smooth" });
 
-          // Record real view count in database
           const targetId = (found as { _id?: string })._id || found.id;
           if (targetId) {
             recordBlogView(targetId).then((newViews) => {
@@ -134,19 +230,55 @@ export default function App() {
           }
         } else {
           setCurrentView("blog");
+          updatePageSEO(PAGE_SEO_MAP.blog.title, PAGE_SEO_MAP.blog.description, "/blog");
         }
-      } else if (hash === "#admin") {
+      } else if (hash === "#admin" || pathname === "/admin") {
         setCurrentView("admin");
+        updatePageSEO(PAGE_SEO_MAP.admin.title, PAGE_SEO_MAP.admin.description, "/admin");
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
+        // Home view with section detection
         setCurrentView("home");
         setSelectedBlog(null);
+
+        let section = "home";
+        if (hash.startsWith("#") && hash.length > 1) {
+          section = hash.substring(1);
+        } else if (pathname === "/services") {
+          section = "services";
+        } else if (pathname === "/about") {
+          section = "about";
+        } else if (pathname === "/gallery") {
+          section = "gallery";
+        } else if (pathname === "/booking" || pathname === "/book") {
+          section = "booking";
+        } else if (pathname === "/contact") {
+          section = "contact";
+        }
+
+        const config = PAGE_SEO_MAP[section] || PAGE_SEO_MAP.home;
+        updatePageSEO(config.title, config.description, config.path);
+
+        const targetId = section === "booking" ? "book" : section;
+        if (targetId && targetId !== "home") {
+          setTimeout(() => {
+            const el = document.getElementById(targetId);
+            if (el) {
+              const topOffset = el.offsetTop - 85;
+              window.scrollTo({ top: topOffset, behavior: "smooth" });
+            }
+          }, 150);
+        }
       }
     };
 
-    handleHashSync();
-    window.addEventListener("hashchange", handleHashSync);
-    return () => window.removeEventListener("hashchange", handleHashSync);
+    handleRouteSync();
+    window.addEventListener("hashchange", handleRouteSync);
+    window.addEventListener("popstate", handleRouteSync);
+    return () => {
+      window.removeEventListener("hashchange", handleRouteSync);
+      window.removeEventListener("popstate", handleRouteSync);
+    };
   }, [posts]);
 
   // Initial load
@@ -159,8 +291,13 @@ export default function App() {
     if (view === "home") {
       setCurrentView("home");
       setSelectedBlog(null);
-      window.location.hash = targetSection ? `#${targetSection}` : "#home";
-      if (targetSection) {
+
+      const sectionKey = targetSection || "home";
+      const config = PAGE_SEO_MAP[sectionKey] || PAGE_SEO_MAP.home;
+      updatePageSEO(config.title, config.description, config.path);
+
+      if (targetSection && targetSection !== "home") {
+        window.location.hash = `#${targetSection}`;
         setTimeout(() => {
           const el = document.getElementById(targetSection);
           if (el) {
@@ -169,15 +306,18 @@ export default function App() {
           }
         }, 120);
       } else {
+        window.location.hash = "#home";
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     } else if (view === "blog") {
       setCurrentView("blog");
       setSelectedBlog(null);
+      updatePageSEO(PAGE_SEO_MAP.blog.title, PAGE_SEO_MAP.blog.description, "/blog");
       window.location.hash = "#blog";
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (view === "admin") {
       setCurrentView("admin");
+      updatePageSEO(PAGE_SEO_MAP.admin.title, PAGE_SEO_MAP.admin.description, "/admin");
       window.location.hash = "#admin";
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -187,7 +327,14 @@ export default function App() {
   const handleSelectPost = (post: BlogArticle | BlogPost) => {
     setSelectedBlog(post);
     setCurrentView("blog-detail");
-    window.location.hash = `#blog/${post.slug || (post as { _id?: string })._id || post.id}`;
+    const slug = post.slug || (post as { _id?: string })._id || post.id;
+    window.location.hash = `#blog/${slug}`;
+    const postTitle = post.seo_title || `${post.title} | AM Unisex Salon`;
+    const postDesc =
+      post.seo_description ||
+      post.excerpt ||
+      `Read ${post.title} on AM Unisex Salon blog.`;
+    updatePageSEO(postTitle, postDesc, `/blog/${slug}`);
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     const targetId = (post as { _id?: string })._id || post.id;
@@ -200,40 +347,33 @@ export default function App() {
   const handleBookClick = () => {
     if (currentView !== "home") {
       setCurrentView("home");
-      window.location.hash = "#book";
-      setTimeout(() => {
-        const bookingSection = document.getElementById("book");
-        if (bookingSection) {
-          const topOffset = bookingSection.offsetTop - 85;
-          window.scrollTo({ top: topOffset, behavior: "smooth" });
-        }
-      }, 120);
-      return;
     }
-
-    const bookingSection = document.getElementById("book");
-    if (bookingSection) {
-      const topOffset = bookingSection.offsetTop - 85;
-      window.scrollTo({
-        top: topOffset,
-        behavior: "smooth",
-      });
-    }
+    const config = PAGE_SEO_MAP.booking;
+    updatePageSEO(config.title, config.description, config.path);
+    window.location.hash = "#book";
+    setTimeout(() => {
+      const bookingSection = document.getElementById("book");
+      if (bookingSection) {
+        const topOffset = bookingSection.offsetTop - 85;
+        window.scrollTo({ top: topOffset, behavior: "smooth" });
+      }
+    }, 120);
   };
 
   const handleServicesClick = () => {
     if (currentView !== "home") {
-      handleNavigate("home", "services");
-      return;
+      setCurrentView("home");
     }
-    const servicesSection = document.getElementById("services");
-    if (servicesSection) {
-      const topOffset = servicesSection.offsetTop - 85;
-      window.scrollTo({
-        top: topOffset,
-        behavior: "smooth",
-      });
-    }
+    const config = PAGE_SEO_MAP.services;
+    updatePageSEO(config.title, config.description, config.path);
+    window.location.hash = "#services";
+    setTimeout(() => {
+      const servicesSection = document.getElementById("services");
+      if (servicesSection) {
+        const topOffset = servicesSection.offsetTop - 85;
+        window.scrollTo({ top: topOffset, behavior: "smooth" });
+      }
+    }, 120);
   };
 
   const handleServiceSelect = (serviceName: string) => {
@@ -350,7 +490,7 @@ export default function App() {
         <main>
           {currentView === "home" && (
             <>
-              {/* Home Slideshow Header */}
+              {/* Home Slideshow Header with Single Primary H1 */}
               <Hero
                 onBookClick={handleBookClick}
                 onServicesClick={handleServicesClick}
@@ -379,6 +519,9 @@ export default function App() {
                 selectedService={selectedService}
                 onClearService={() => setSelectedService("")}
               />
+
+              {/* Visible Physical Storefront & Google Maps Location */}
+              <Location onBookClick={handleBookClick} />
             </>
           )}
 

@@ -64,7 +64,7 @@ export default function About() {
               <div className="relative overflow-hidden shadow-2xl rounded-sm aspect-[4/5] bg-neutral-900 border border-white/10 group">
                 <img
                   src={LOCAL_ASSETS.salonInteriorMain}
-                  alt="AM Unisex Salon Main Lounge"
+                  alt="AM Unisex Salon interior lounge in Hyderabad"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
@@ -83,7 +83,7 @@ export default function About() {
               <div className="relative overflow-hidden shadow-2xl rounded-sm aspect-square bg-bg-charcoal border border-white/15">
                 <img
                   src={LOCAL_ASSETS.skinCareRoom}
-                  alt="Hygienic treatment rooms"
+                  alt="Private skin care and facial room at AM Unisex Salon Hyderabad"
                   className="w-full h-full object-cover"
                   loading="lazy"
                   decoding="async"
@@ -113,18 +113,41 @@ export default function About() {
               transition={{ duration: 0.6 }}
             >
               <span className="text-secondary text-xs uppercase font-body tracking-[0.25em] font-semibold flex items-center gap-2 mb-2">
-                <Sparkle className="w-3 h-3 text-secondary" /> Estd. 2018 Pragathi Nagar
+                <Sparkle className="w-3 h-3 text-secondary" /> Estd. 2018 &middot; Nallagandla, Hyderabad
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white tracking-tight leading-none mb-6">
-                Why Clients Trust <span className="text-gradient">AM Unisex Salon</span>?
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white tracking-tight leading-tight mb-6">
+                Why Choose <span className="text-gradient">AM Unisex Salon?</span>
               </h2>
 
+              <p className="text-sm md:text-base text-luxury-cream/70 font-body leading-relaxed mb-4 font-light">
+                AM Unisex Salon is a premier unisex salon in Hyderabad located at HYTEK ARCADE on Kancha Gacchibowli Road, Nallagandla. We provide professional hair, beauty, and grooming services for both men and women under one roof, combining master stylists with clinical-grade hygiene and welcoming hospitality.
+              </p>
               <p className="text-sm md:text-base text-luxury-cream/70 font-body leading-relaxed mb-6 font-light">
-                AM Unisex Salon is one of Pragathi Nagar's most trusted family salons, providing premium beauty and grooming services for men, women and children. With a commitment to excellence, professional expertise and customer satisfaction, we have built a loyal client base that continues to grow every year.
+                Whether you need a precision haircut for men, women&apos;s layer styling, revitalizing hair spa, Pro-Keratin smoothing, Molecular Hair Botox, or rejuvenating Vedic skin facials, our team ensures every visit leaves you looking and feeling your absolute best.
               </p>
-              <p className="text-sm md:text-base text-luxury-cream/70 font-body leading-relaxed mb-8 font-light">
-                Whether it's a structural haircut, organic hair spa, high-grade facial peel, party makeover, or bridal master services, our team ensures every guest enjoys a relaxing and luxurious salon experience.
-              </p>
+
+              <div className="flex flex-wrap items-center gap-4 mb-8 text-xs font-semibold uppercase tracking-wider font-body">
+                <a
+                  href="#services"
+                  className="text-secondary hover:text-white underline decoration-dotted transition-colors"
+                >
+                  View our salon services &rarr;
+                </a>
+                <span className="text-white/20">&bull;</span>
+                <a
+                  href="#book"
+                  className="text-secondary hover:text-white underline decoration-dotted transition-colors"
+                >
+                  Book an appointment &rarr;
+                </a>
+                <span className="text-white/20">&bull;</span>
+                <a
+                  href="#contact"
+                  className="text-secondary hover:text-white underline decoration-dotted transition-colors"
+                >
+                  Contact AM Unisex Salon &rarr;
+                </a>
+              </div>
             </motion.div>
 
             {/* Structured Highlights Grid */}

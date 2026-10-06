@@ -134,10 +134,10 @@ export default function BookingForm({ selectedService, onClearService }: Booking
               <Sparkle className="w-3.5 h-3.5 text-secondary" /> Priority Booking
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white tracking-tight mt-1 mb-6">
-              Confirm Your <span className="text-gradient">Luxury Experience</span>
+              Book an Appointment at <span className="text-gradient">AM Unisex Salon</span>
             </h2>
             <p className="text-sm text-luxury-cream/65 font-body leading-relaxed mb-8 font-light">
-              We look forward to hosting you! Fill out this booking sheet to prepare your chair. Your requested timing will be forwarded straight to our staff over WhatsApp for instant, customized locking.
+              We look forward to hosting you at our salon in Nallagandla, Hyderabad! Fill out this booking form to reserve your chair. Your requested timing is forwarded straight to our staff over WhatsApp for instant confirmation.
             </p>
 
             {/* Quick action buttons */}

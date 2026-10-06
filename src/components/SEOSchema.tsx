@@ -1,106 +1,70 @@
 import React, { useEffect } from "react";
 
+/**
+ * SEOSchema Component
+ * Injects and maintains structured data in the document head without creating duplicate schemas.
+ * Primary HairSalon LocalBusiness JSON-LD is also embedded in index.html for instant crawler discovery.
+ */
 export default function SEOSchema() {
   useEffect(() => {
-    // 1. Local Business & Beauty Salon Schema
-    const businessSchema = {
-      "@context": "https://schema.org",
-      "@type": "BeautySalon",
-      "name": "AM Unisex Salon",
-      "image": [
-        "https://akshaiunisexsalon.com/images/reception-01.webp",
-        "https://akshaiunisexsalon.com/images/salon-sign-01.webp"
-      ],
-      "@id": "https://akshaiunisexsalon.com/#salon",
-      "url": "https://akshaiunisexsalon.com",
-      "telephone": "+917569979965",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Near Shiva Medicals, 3rd Layout, Pragathi Nagar",
-        "addressLocality": "Hyderabad",
-        "addressRegion": "Telangana",
-        "postalCode": "500090",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "17.5165991",
-        "longitude": "78.3892702"
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
+    // If business schema already exists in index.html, ensure it stays consistent
+    const existingBusinessScript = document.getElementById("jsonld-business-schema");
+    if (!existingBusinessScript) {
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.id = "jsonld-business-schema";
+      script.innerHTML = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "HairSalon",
+        "@id": "https://am-salon-three.vercel.app/#hairsalon",
+        "name": "AM Unisex Salon",
+        "url": "https://am-salon-three.vercel.app/",
+        "logo": "https://am-salon-three.vercel.app/images/akshai-logo.jpeg",
+        "image": [
+          "https://am-salon-three.vercel.app/images/reception-01.webp",
+          "https://am-salon-three.vercel.app/images/hair-wash-station-01.webp",
+          "https://am-salon-three.vercel.app/images/facial-room-01.webp"
         ],
-        "opens": "09:00",
-        "closes": "21:00"
-      },
-      "sameAs": [
-        "https://www.instagram.com/akshaiunisexsalonpragathinagar"
-      ]
-    };
-
-    // 2. FAQ Page Schema
-    const faqSchema = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Do I need to book an appointment in advance?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "While we gladly welcome walk-in guests based on chair availability, booking an appointment online or via WhatsApp guarantees you get paired with your favorite senior stylist right on your scheduled time."
-          }
+        "telephone": "+917569979965",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Plot No 87&88, Block B 201, HYTEK ARCADE, Kancha Gacchibowli Road, Nallagandla",
+          "addressLocality": "Serilingampalle",
+          "addressRegion": "Telangana",
+          "postalCode": "500046",
+          "addressCountry": "IN"
         },
-        {
-          "@type": "Question",
-          "name": "What specialty treatments do you offer for damaged hair?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We are Pragathi Nagar's leading specialists in restorative therapies. This includes premium molecular Hair Botox (for shine and volume), signature Pro-Keratin Protein treatments, and deep-root conditioning Caviar Spas."
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "09:00",
+            "closes": "21:00"
           }
-        },
-        {
-          "@type": "Question",
-          "name": "Is secure four-wheeler and two-wheeler parking available?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, we have comfortable front parking space available for both two-wheelers and family cars near Shiva Medicals, Pragathi Nagar."
-          }
-        }
-      ]
-    };
+        ],
+        "sameAs": [
+          "https://www.instagram.com/akshaiunisexsalonpragathinagar"
+        ]
+      });
+      document.head.appendChild(script);
+    }
 
-    // Inject Local Business Tag
-    const businessScript = document.createElement("script");
-    businessScript.type = "application/ld+json";
-    businessScript.id = "jsonld-business-schema";
-    businessScript.innerHTML = JSON.stringify(businessSchema);
-    document.head.appendChild(businessScript);
-
-    // Inject FAQ Tag
-    const faqScript = document.createElement("script");
-    faqScript.type = "application/ld+json";
-    faqScript.id = "jsonld-faq-schema";
-    faqScript.innerHTML = JSON.stringify(faqSchema);
-    document.head.appendChild(faqScript);
-
-    // Cleanup on unmount to prevent duplicate structural scripts
     return () => {
-      const existingBusiness = document.getElementById("jsonld-business-schema");
-      const existingFaq = document.getElementById("jsonld-faq-schema");
-      if (existingBusiness) document.head.removeChild(existingBusiness);
-      if (existingFaq) document.head.removeChild(existingFaq);
+      const dynamicScript = document.getElementById("jsonld-business-schema");
+      if (dynamicScript && dynamicScript.parentNode) {
+        dynamicScript.parentNode.removeChild(dynamicScript);
+      }
     };
   }, []);
 
-  return null; // Side-effect only component
+  return null;
 }
