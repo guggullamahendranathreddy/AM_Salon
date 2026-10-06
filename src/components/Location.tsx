@@ -8,8 +8,10 @@ interface LocationProps {
 export default function Location({ onBookClick }: LocationProps) {
   const addressString =
     "Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India";
-  const googleMapsUrl =
+  const googleMapsPlaceUrl =
     "https://maps.google.com/?cid=14103202395395251575";
+  const googleMapsDirectionsUrl =
+    "https://www.google.com/maps/dir/?api=1&destination=17.5165991,78.3892702";
   const googleMapsEmbedUrl =
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.8105574518427!2d78.3892702!3d17.5165991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91c53e8e2d45%3A0xc3b8a3db4cf8dd77!2sAkshai%20Unisex%20Salon!5e0!3m2!1sen!2sin!4v1700000000000";
 
@@ -117,7 +119,7 @@ export default function Location({ onBookClick }: LocationProps) {
             {/* Quick action buttons */}
             <div className="pt-6 mt-6 border-t border-white/5 flex flex-col sm:flex-row gap-3">
               <a
-                href={googleMapsUrl}
+                href={googleMapsDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-sm bg-bg-dark border border-secondary/40 hover:border-secondary text-xs font-semibold uppercase tracking-wider text-luxury-cream hover:text-white transition-all duration-200"
@@ -148,7 +150,7 @@ export default function Location({ onBookClick }: LocationProps) {
                 <MapPin className="w-3.5 h-3.5 text-secondary" /> Near Shiva Medicals, Pragathi Nagar, Hyderabad
               </span>
               <a
-                href={googleMapsUrl}
+                href={googleMapsPlaceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-secondary hover:text-white underline decoration-dotted text-[11px] font-semibold uppercase tracking-wider"
