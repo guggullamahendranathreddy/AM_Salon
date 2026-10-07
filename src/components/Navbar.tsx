@@ -40,10 +40,8 @@ export default function Navbar({ onBookClick, currentView = "home", onNavigate }
     { name: "Home", href: "#home", id: "home" },
     { name: "About Us", href: "#about", id: "about" },
     { name: "Services", href: "#services", id: "services" },
-    { name: "Gallery", href: "#gallery", id: "gallery" },
     { name: "Reviews", href: "#reviews", id: "reviews" },
     { name: "Blog", href: "#blog", id: "blog" },
-    { name: "Contact", href: "#contact", id: "contact" },
   ];
 
   // Synchronize active section with currentView
