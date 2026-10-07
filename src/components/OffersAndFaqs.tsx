@@ -7,7 +7,7 @@ export default function OffersAndFaqs() {
   const [openFaq, setOpenFaq] = useState<string | null>("f1");
 
   return (
-    <section className="relative py-20 bg-bg-charcoal border-y border-primary/10 overflow-hidden">
+    <section id="faqs" className="relative py-20 bg-bg-charcoal border-y border-primary/10 overflow-hidden">
       
       {/* Decorative vectors */}
       <div className="absolute top-10 left-0 w-80 h-80 bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
@@ -40,11 +40,13 @@ export default function OffersAndFaqs() {
                     {/* Collapsible Header toggle */}
                     <button
                       onClick={() => setOpenFaq(isOpen ? null : faq.id)}
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-answer-${faq.id}`}
                       className="w-full text-left p-5 flex items-center justify-between gap-4 font-body outline-none cursor-pointer focus:bg-bg-charcoal/10"
                     >
-                      <span className="text-sm font-bold uppercase tracking-wider text-white">
+                      <h3 className="text-sm font-bold uppercase tracking-wider text-white">
                         {faq.question}
-                      </span>
+                      </h3>
                       <motion.div
                         animate={{ rotate: isOpen ? 180 : 0 }}
                         transition={{ duration: 0.25 }}
@@ -58,6 +60,7 @@ export default function OffersAndFaqs() {
                     <AnimatePresence initial={false}>
                       {isOpen && (
                         <motion.div
+                          id={`faq-answer-${faq.id}`}
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}

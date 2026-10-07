@@ -164,10 +164,10 @@ export default function Footer({ onNavigate }: FooterProps = {}) {
               <div className="space-y-2.5 font-body text-xs">
                 <div className="flex items-start gap-2 text-luxury-cream/70">
                   <MapPin className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
-                  <p className="leading-relaxed">
+                  <address className="not-italic leading-relaxed font-body">
                     Near Shiva Medicals, 3rd Layout,<br />
                     Pragathi Nagar, Hyderabad, Telangana 500090, India
-                  </p>
+                  </address>
                 </div>
                 
                 <div className="flex items-center gap-3">

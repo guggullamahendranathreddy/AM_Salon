@@ -75,50 +75,50 @@ export function updatePageSEO(title: string, description: string, path = "/") {
 
 const PAGE_SEO_MAP: Record<string, { title: string; description: string; path: string }> = {
   home: {
-    title: "AM Unisex Salon | Unisex Salon in Hyderabad",
+    title: "AM Unisex Salon | Unisex Salon in Pragathi Nagar, Hyderabad",
     description:
-      "AM Unisex Salon in Hyderabad offers professional haircuts, hair styling, hair spa, beauty and grooming services for men and women.",
+      "AM Unisex Salon in Pragathi Nagar, Hyderabad offers haircuts for men and women, restorative hair spa, Pro-Keratin, Molecular Hair Botox, and skin facials. Open 7 days.",
     path: "/",
   },
   services: {
-    title: "Salon Services in Hyderabad | AM Unisex Salon",
+    title: "Salon Services in Pragathi Nagar, Hyderabad | AM Unisex Salon",
     description:
-      "Explore hair styling, haircuts for men & women, hair botox, keratin, facials and bridal grooming at AM Unisex Salon in Pragathi Nagar, Hyderabad.",
+      "Explore hair styling, haircuts for men & women, beard shaping, hair botox, keratin smoothing, caviar hair spa, and facials at AM Unisex Salon in Pragathi Nagar, Hyderabad.",
     path: "/services",
   },
   about: {
-    title: "About Us | AM Unisex Salon Pragathi Nagar Hyderabad",
+    title: "About AM Unisex Salon | Family Salon in Pragathi Nagar Hyderabad",
     description:
-      "Learn about AM Unisex Salon, Hyderabad's trusted family salon offering hygienic haircuts, premium beauty treatments, and experienced stylists.",
+      "Learn about AM Unisex Salon, Hyderabad's trusted family salon offering hygienic haircuts, premium beauty treatments, and experienced master stylists.",
     path: "/about",
   },
   gallery: {
-    title: "Salon Gallery | AM Unisex Salon Hyderabad",
+    title: "Salon Photo Gallery | AM Unisex Salon Pragathi Nagar Hyderabad",
     description:
-      "View photos of AM Unisex Salon in Hyderabad, including modern hair styling stations, facial rooms, and hygienic salon interiors.",
+      "View photos of AM Unisex Salon in Hyderabad, including modern hair styling stations, comfortable hair wash basins, and private facial treatment rooms.",
     path: "/gallery",
   },
   booking: {
-    title: "Book Salon Appointment | AM Unisex Salon Hyderabad",
+    title: "Book Salon Appointment | AM Unisex Salon Pragathi Nagar Hyderabad",
     description:
       "Book an appointment online at AM Unisex Salon in Pragathi Nagar, Hyderabad. Haircuts, hair spa, facials and grooming with instant WhatsApp confirmation.",
     path: "/booking",
   },
   contact: {
-    title: "Contact AM Unisex Salon | Pragathi Nagar Hyderabad",
+    title: "Contact AM Unisex Salon | Near Shiva Medicals Pragathi Nagar Hyderabad",
     description:
-      "Visit AM Unisex Salon Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad. Call +91 75699 79965 or visit Monday–Sunday 9 AM–9 PM.",
+      "Visit AM Unisex Salon Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad. Call +91 75699 79965 or visit Monday–Sunday 9:00 AM–9:00 PM.",
     path: "/contact",
   },
   blog: {
     title: "Hair Care & Beauty Blog | AM Unisex Salon Hyderabad",
     description:
-      "Read expert hair care, beauty tips, and salon treatment guides from master stylists at AM Unisex Salon in Hyderabad.",
+      "Read expert hair care, beauty tips, and salon treatment guides from master stylists at AM Unisex Salon in Pragathi Nagar, Hyderabad.",
     path: "/blog",
   },
   admin: {
     title: "Admin Portal | AM Unisex Salon",
-    description: "Admin management portal for AM Unisex Salon.",
+    description: "Secure management portal for AM Unisex Salon.",
     path: "/admin",
   },
 };
@@ -475,7 +475,7 @@ export default function App() {
   return (
     <>
       {/* 1. SEO Metadata schema on mount */}
-      <SEOSchema />
+      <SEOSchema currentView={currentView} selectedBlog={selectedBlog} />
 
       <div className="relative min-h-screen bg-bg-dark text-luxury-cream selection:bg-primary selection:text-white overflow-x-hidden">
         

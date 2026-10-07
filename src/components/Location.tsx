@@ -64,9 +64,9 @@ export default function Location({ onBookClick }: LocationProps) {
                     <span className="text-white font-bold block uppercase tracking-wider text-[11px] mb-0.5">
                       Salon Address
                     </span>
-                    <p className="leading-relaxed text-luxury-cream/70 text-xs">
+                    <address className="not-italic leading-relaxed text-luxury-cream/70 text-xs font-body">
                       {addressString}
-                    </p>
+                    </address>
                   </div>
                 </div>
 

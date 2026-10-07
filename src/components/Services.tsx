@@ -48,9 +48,9 @@ export default function Services({ onServiceSelect }: ServicesProps) {
           <div className="p-5 rounded-lg bg-bg-dark/80 border border-white/5 flex flex-col justify-between">
             <div>
               <span className="text-secondary text-[10px] uppercase font-bold tracking-widest font-body">Hair Care Specialty</span>
-              <h2 className="text-lg sm:text-xl font-display font-bold text-white tracking-tight mt-1 mb-2">
+              <h3 className="text-lg sm:text-xl font-display font-bold text-white tracking-tight mt-1 mb-2">
                 Hair Services for Men &amp; Women
-              </h2>
+              </h3>
               <p className="text-xs text-luxury-cream/65 leading-relaxed font-body font-light mb-4">
                 Tailored haircuts for men and women, beard sculpting, root touch-ups, global coloring, restorative Pro-Keratin protein therapies, and Molecular Hair Botox treatments in Hyderabad.
               </p>
@@ -82,9 +82,9 @@ export default function Services({ onServiceSelect }: ServicesProps) {
           <div className="p-5 rounded-lg bg-bg-dark/80 border border-white/5 flex flex-col justify-between">
             <div>
               <span className="text-accent text-[10px] uppercase font-bold tracking-widest font-body">Skin &amp; Aesthetics</span>
-              <h2 className="text-lg sm:text-xl font-display font-bold text-white tracking-tight mt-1 mb-2">
+              <h3 className="text-lg sm:text-xl font-display font-bold text-white tracking-tight mt-1 mb-2">
                 Beauty &amp; Grooming Services
-              </h2>
+              </h3>
               <p className="text-xs text-luxury-cream/65 leading-relaxed font-body font-light mb-4">
                 Rejuvenating Vedic radiance facials, oxygen skin clarifying, instant glow cleanups, gentle de-tan therapy, manicure, pedicure, and high-definition bridal and groom portfolios.
               </p>

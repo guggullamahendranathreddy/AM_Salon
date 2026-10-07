@@ -116,7 +116,15 @@ export default function BlogDetail({
       "publisher": {
         "@type": "Organization",
         "name": "AM Unisex Salon",
-        "url": window.location.origin,
+        "url": "https://am-salon-three.vercel.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://am-salon-three.vercel.app/images/am-salon-logo.jpeg"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://am-salon-three.vercel.app/blog/${post.slug || (post as { _id?: string })._id || post.id}`
       },
       "description": newDesc,
     });

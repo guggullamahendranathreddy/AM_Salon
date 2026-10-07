@@ -1,76 +1,114 @@
 import React, { useEffect } from "react";
+import { FAQS } from "../data";
+import { BlogArticle, BlogPost } from "../types";
+
+interface SEOSchemaProps {
+  currentView?: "home" | "blog" | "blog-detail" | "admin";
+  selectedBlog?: BlogArticle | BlogPost | null;
+}
 
 /**
  * SEOSchema Component
- * Injects and maintains structured data in the document head without creating duplicate schemas.
- * Primary HairSalon LocalBusiness JSON-LD is also embedded in index.html for instant crawler discovery.
+ * Injects structured data dynamically into document head:
+ * 1. FAQPage JSON-LD (strictly mirroring visible FAQs on the page)
+ * 2. BreadcrumbList JSON-LD (mirroring current route navigation hierarchy)
+ * 3. Base HairSalon / WebSite / Organization schema is anchored in index.html for instant crawler discovery
  */
-export default function SEOSchema() {
+export default function SEOSchema({ currentView = "home", selectedBlog }: SEOSchemaProps) {
   useEffect(() => {
-    // If business schema already exists in index.html, ensure it stays consistent
-    const existingBusinessScript = document.getElementById("jsonld-business-schema");
-    if (!existingBusinessScript) {
-      const script = document.createElement("script");
-      script.type = "application/ld+json";
-      script.id = "jsonld-business-schema";
-      script.innerHTML = JSON.stringify({
+    // 1. FAQPage Schema (applied when on home view where FAQs are rendered)
+    const faqScriptId = "jsonld-faq-schema";
+    let faqScript = document.getElementById(faqScriptId) as HTMLScriptElement | null;
+
+    if (currentView === "home") {
+      if (!faqScript) {
+        faqScript = document.createElement("script");
+        faqScript.type = "application/ld+json";
+        faqScript.id = faqScriptId;
+        document.head.appendChild(faqScript);
+      }
+      faqScript.textContent = JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "HairSalon",
-        "@id": "https://am-salon-three.vercel.app/#hairsalon",
-        "name": "AM Unisex Salon",
-        "url": "https://am-salon-three.vercel.app/",
-        "logo": "https://am-salon-three.vercel.app/images/am-salon-logo.jpeg",
-        "image": [
-          "https://am-salon-three.vercel.app/images/reception-01.webp",
-          "https://am-salon-three.vercel.app/images/hair-wash-station-01.webp",
-          "https://am-salon-three.vercel.app/images/facial-room-01.webp"
-        ],
-        "telephone": "+917569979965",
-        "priceRange": "$$",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Near Shiva Medicals, 3rd Layout, Pragathi Nagar",
-          "addressLocality": "Pragathi Nagar",
-          "addressRegion": "Telangana",
-          "postalCode": "500090",
-          "addressCountry": "IN"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 17.5165991,
-          "longitude": 78.3892702
-        },
-        "hasMap": "https://maps.google.com/?cid=14103202395395251575",
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday",
-              "Sunday"
-            ],
-            "opens": "09:00",
-            "closes": "21:00"
-          }
-        ],
-        "sameAs": [
-          "https://www.instagram.com/akshaiunisexsalonpragathinagar"
-        ]
+        "@type": "FAQPage",
+        "mainEntity": FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer,
+          },
+        })),
       });
-      document.head.appendChild(script);
+    } else if (faqScript && faqScript.parentNode) {
+      faqScript.parentNode.removeChild(faqScript);
     }
 
+    // 2. BreadcrumbList Schema
+    const breadcrumbScriptId = "jsonld-breadcrumb-schema";
+    let breadcrumbScript = document.getElementById(breadcrumbScriptId) as HTMLScriptElement | null;
+    if (!breadcrumbScript) {
+      breadcrumbScript = document.createElement("script");
+      breadcrumbScript.type = "application/ld+json";
+      breadcrumbScript.id = breadcrumbScriptId;
+      document.head.appendChild(breadcrumbScript);
+    }
+
+    const breadcrumbs = [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://am-salon-three.vercel.app/",
+      },
+    ];
+
+    if (currentView === "blog") {
+      breadcrumbs.push({
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://am-salon-three.vercel.app/blog",
+      });
+    } else if (currentView === "blog-detail" && selectedBlog) {
+      breadcrumbs.push({
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://am-salon-three.vercel.app/blog",
+      });
+      const slug = selectedBlog.slug || (selectedBlog as { _id?: string })._id || selectedBlog.id;
+      breadcrumbs.push({
+        "@type": "ListItem",
+        "position": 3,
+        "name": selectedBlog.title,
+        "item": `https://am-salon-three.vercel.app/blog/${slug}`,
+      });
+    } else if (currentView === "admin") {
+      breadcrumbs.push({
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Admin Portal",
+        "item": "https://am-salon-three.vercel.app/admin",
+      });
+    }
+
+    breadcrumbScript.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbs,
+    });
+
     return () => {
-      const dynamicScript = document.getElementById("jsonld-business-schema");
-      if (dynamicScript && dynamicScript.parentNode) {
-        dynamicScript.parentNode.removeChild(dynamicScript);
+      const dynamicFaq = document.getElementById(faqScriptId);
+      if (dynamicFaq && dynamicFaq.parentNode) {
+        dynamicFaq.parentNode.removeChild(dynamicFaq);
+      }
+      const dynamicBreadcrumb = document.getElementById(breadcrumbScriptId);
+      if (dynamicBreadcrumb && dynamicBreadcrumb.parentNode) {
+        dynamicBreadcrumb.parentNode.removeChild(dynamicBreadcrumb);
       }
     };
-  }, []);
+  }, [currentView, selectedBlog]);
 
   return null;
 }
