@@ -33,10 +33,11 @@ import {
   fetchCurrentAdmin,
   AuthUser,
 } from "./lib/api";
+import { SITE_CONFIG } from "./config/site";
 
 type AppView = "home" | "blog" | "blog-detail" | "admin";
 
-const BASE_CANONICAL_URL = "https://am-salon-three.vercel.app";
+const BASE_CANONICAL_URL = SITE_CONFIG.siteUrl;
 
 function setMetaTag(name: string, content: string, isProperty = false) {
   const selector = isProperty ? `meta[property="${name}"]` : `meta[name="${name}"]`;
@@ -75,37 +76,37 @@ export function updatePageSEO(title: string, description: string, path = "/") {
 
 const PAGE_SEO_MAP: Record<string, { title: string; description: string; path: string }> = {
   home: {
-    title: "AM Unisex Salon | Unisex Salon in Pragathi Nagar, Hyderabad",
+    title: "AM Unisex Salon | Unisex Salon in Hyderabad",
     description:
-      "AM Unisex Salon in Pragathi Nagar, Hyderabad offers haircuts for men and women, restorative hair spa, Pro-Keratin, Molecular Hair Botox, and skin facials. Open 7 days.",
+      "AM Unisex Salon in Hyderabad offers professional haircuts for men and women, restorative hair spa, Pro-Keratin, Molecular Hair Botox, and glowing skin facials. Open 7 days.",
     path: "/",
   },
   services: {
-    title: "Salon Services in Pragathi Nagar, Hyderabad | AM Unisex Salon",
+    title: "Salon Services in Hyderabad | AM Unisex Salon",
     description:
-      "Explore hair styling, haircuts for men & women, beard shaping, hair botox, keratin smoothing, caviar hair spa, and facials at AM Unisex Salon in Pragathi Nagar, Hyderabad.",
+      "Explore hair styling, haircuts for men & women, beard shaping, hair botox, keratin smoothing, caviar hair spa, and facials at AM Unisex Salon in Hyderabad.",
     path: "/services",
   },
   about: {
-    title: "About AM Unisex Salon | Family Salon in Pragathi Nagar Hyderabad",
+    title: "About AM Unisex Salon | Family Salon in Hyderabad",
     description:
       "Learn about AM Unisex Salon, Hyderabad's trusted family salon offering hygienic haircuts, premium beauty treatments, and experienced master stylists.",
     path: "/about",
   },
   gallery: {
-    title: "Salon Photo Gallery | AM Unisex Salon Pragathi Nagar Hyderabad",
+    title: "Salon Photo Gallery | AM Unisex Salon Hyderabad",
     description:
       "View photos of AM Unisex Salon in Hyderabad, including modern hair styling stations, comfortable hair wash basins, and private facial treatment rooms.",
     path: "/gallery",
   },
   booking: {
-    title: "Book Salon Appointment | AM Unisex Salon Pragathi Nagar Hyderabad",
+    title: "Book Salon Appointment | AM Unisex Salon Hyderabad",
     description:
-      "Book an appointment online at AM Unisex Salon in Pragathi Nagar, Hyderabad. Haircuts, hair spa, facials and grooming with instant WhatsApp confirmation.",
+      "Book an appointment online at AM Unisex Salon in Hyderabad. Haircuts, hair spa, facials and grooming with instant WhatsApp confirmation.",
     path: "/booking",
   },
   contact: {
-    title: "Contact AM Unisex Salon | Near Shiva Medicals Pragathi Nagar Hyderabad",
+    title: "Contact AM Unisex Salon | Near Shiva Medicals Hyderabad",
     description:
       "Visit AM Unisex Salon Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad. Call +91 75699 79965 or visit Monday–Sunday 9:00 AM–9:00 PM.",
     path: "/contact",
@@ -113,7 +114,7 @@ const PAGE_SEO_MAP: Record<string, { title: string; description: string; path: s
   blog: {
     title: "Hair Care & Beauty Blog | AM Unisex Salon Hyderabad",
     description:
-      "Read expert hair care, beauty tips, and salon treatment guides from master stylists at AM Unisex Salon in Pragathi Nagar, Hyderabad.",
+      "Read expert hair care, beauty tips, and salon treatment guides from master stylists at AM Unisex Salon in Hyderabad.",
     path: "/blog",
   },
   admin: {

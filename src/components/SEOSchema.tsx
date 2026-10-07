@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { FAQS } from "../data";
 import { BlogArticle, BlogPost } from "../types";
+import { SITE_CONFIG } from "../config/site";
 
 interface SEOSchemaProps {
   currentView?: "home" | "blog" | "blog-detail" | "admin";
@@ -16,6 +17,8 @@ interface SEOSchemaProps {
  */
 export default function SEOSchema({ currentView = "home", selectedBlog }: SEOSchemaProps) {
   useEffect(() => {
+    const base = SITE_CONFIG.siteUrl;
+
     // 1. FAQPage Schema (applied when on home view where FAQs are rendered)
     const faqScriptId = "jsonld-faq-schema";
     let faqScript = document.getElementById(faqScriptId) as HTMLScriptElement | null;
@@ -58,7 +61,7 @@ export default function SEOSchema({ currentView = "home", selectedBlog }: SEOSch
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://am-salon-three.vercel.app/",
+        "item": `${base}/`,
       },
     ];
 
@@ -67,28 +70,28 @@ export default function SEOSchema({ currentView = "home", selectedBlog }: SEOSch
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://am-salon-three.vercel.app/blog",
+        "item": `${base}/blog`,
       });
     } else if (currentView === "blog-detail" && selectedBlog) {
       breadcrumbs.push({
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://am-salon-three.vercel.app/blog",
+        "item": `${base}/blog`,
       });
       const slug = selectedBlog.slug || (selectedBlog as { _id?: string })._id || selectedBlog.id;
       breadcrumbs.push({
         "@type": "ListItem",
         "position": 3,
         "name": selectedBlog.title,
-        "item": `https://am-salon-three.vercel.app/blog/${slug}`,
+        "item": `${base}/blog/${slug}`,
       });
     } else if (currentView === "admin") {
       breadcrumbs.push({
         "@type": "ListItem",
         "position": 2,
         "name": "Admin Portal",
-        "item": "https://am-salon-three.vercel.app/admin",
+        "item": `${base}/admin`,
       });
     }
 

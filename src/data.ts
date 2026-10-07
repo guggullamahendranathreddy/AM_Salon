@@ -325,6 +325,16 @@ export const FAQS: FAQItem[] = [
     question: "Which major professional beauty product brands do you use?",
     answer: "We strictly prioritize your hair and skin health. We use genuine international formulas such as L'Oréal Professional, Matrix, Schwarzkopf, and premium dermatological care brands.",
   },
+  {
+    id: "f9",
+    question: "Which areas in Hyderabad do clients visit AM Unisex Salon from?",
+    answer: "While located Near Shiva Medicals in Pragathi Nagar, we regularly welcome guests from across Hyderabad, including Nallagandla, Serilingampally, Kukatpally, Bachupally, Nizampet, and Miyapur for expert hair botox, keratin treatments, facials, and grooming.",
+  },
+  {
+    id: "f10",
+    question: "Do you accept walk-in clients or is prior booking recommended?",
+    answer: "Walk-in guests are always welcome 7 days a week! For comprehensive hair therapies like Pro-Keratin, Molecular Hair Botox, or bridal packages, we recommend reserving your slot online or via WhatsApp to minimize wait time.",
+  },
 ];
 
 // Before and After Transformations

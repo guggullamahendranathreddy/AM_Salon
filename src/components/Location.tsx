@@ -1,19 +1,16 @@
 import React from "react";
 import { MapPin, Phone, Clock, MessageSquare, ExternalLink, Calendar, Navigation } from "lucide-react";
+import { SITE_CONFIG } from "../config/site";
 
 interface LocationProps {
   onBookClick?: () => void;
 }
 
 export default function Location({ onBookClick }: LocationProps) {
-  const addressString =
-    "Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India";
-  const googleMapsPlaceUrl =
-    "https://maps.google.com/?cid=14103202395395251575";
-  const googleMapsDirectionsUrl =
-    "https://www.google.com/maps/dir/?api=1&destination=17.5165991,78.3892702";
-  const googleMapsEmbedUrl =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.8105574518427!2d78.3892702!3d17.5165991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91c53e8e2d45%3A0xc3b8a3db4cf8dd77!2sAkshai%20Unisex%20Salon!5e0!3m2!1sen!2sin!4v1700000000000";
+  const addressString = SITE_CONFIG.address.fullAddress;
+  const googleMapsPlaceUrl = SITE_CONFIG.googleMapsPlaceUrl;
+  const googleMapsDirectionsUrl = SITE_CONFIG.googleMapsDirectionsUrl;
+  const googleMapsEmbedUrl = SITE_CONFIG.googleMapsEmbedUrl;
 
   return (
     <section id="contact" className="relative py-20 bg-bg-dark border-t border-primary/20 overflow-hidden">
