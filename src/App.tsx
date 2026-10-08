@@ -24,6 +24,7 @@ import PragathiNagarLocation from "./components/locations/PragathiNagarLocation"
 import BlogList from "./components/blog/BlogList";
 import BlogDetail from "./components/blog/BlogDetail";
 import BlogAdmin from "./components/blog/BlogAdmin";
+import NotFound from "./components/NotFound";
 import { BlogArticle, BlogPost } from "./types";
 import {
   fetchPublishedBlogs,
@@ -47,7 +48,8 @@ export type AppView =
   | "admin"
   | "locations"
   | "location-nallagandla"
-  | "location-pragathi-nagar";
+  | "location-pragathi-nagar"
+  | "not-found";
 
 const BASE_CANONICAL_URL = SITE_CONFIG.siteUrl;
 
@@ -299,37 +301,47 @@ export default function App() {
         updatePageSEO(PAGE_SEO_MAP.admin.title, PAGE_SEO_MAP.admin.description, "/admin");
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
-        // Home view with section detection
-        setCurrentView("home");
-        setSelectedBlog(null);
+        const validHomePaths = ["", "/", "/services", "/about", "/gallery", "/booking", "/book", "/contact"];
+        const isKnownHomePath = validHomePaths.includes(pathname);
 
-        let section = "home";
-        if (hash.startsWith("#") && hash.length > 1) {
-          section = hash.substring(1);
-        } else if (pathname === "/services") {
-          section = "services";
-        } else if (pathname === "/about") {
-          section = "about";
-        } else if (pathname === "/gallery") {
-          section = "gallery";
-        } else if (pathname === "/booking" || pathname === "/book") {
-          section = "booking";
-        } else if (pathname === "/contact") {
-          section = "contact";
-        }
+        if (!isKnownHomePath && pathname !== "") {
+          // Non-existent route -> Soft-404 prevention view with noindex SEO
+          setCurrentView("not-found");
+          setSelectedBlog(null);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          // Home view with section detection
+          setCurrentView("home");
+          setSelectedBlog(null);
 
-        const config = PAGE_SEO_MAP[section] || PAGE_SEO_MAP.home;
-        updatePageSEO(config.title, config.description, config.path);
+          let section = "home";
+          if (hash.startsWith("#") && hash.length > 1) {
+            section = hash.substring(1);
+          } else if (pathname === "/services") {
+            section = "services";
+          } else if (pathname === "/about") {
+            section = "about";
+          } else if (pathname === "/gallery") {
+            section = "gallery";
+          } else if (pathname === "/booking" || pathname === "/book") {
+            section = "booking";
+          } else if (pathname === "/contact") {
+            section = "contact";
+          }
 
-        const targetId = section === "booking" ? "book" : section;
-        if (targetId && targetId !== "home") {
-          setTimeout(() => {
-            const el = document.getElementById(targetId);
-            if (el) {
-              const topOffset = el.offsetTop - 85;
-              window.scrollTo({ top: topOffset, behavior: "smooth" });
-            }
-          }, 150);
+          const config = PAGE_SEO_MAP[section] || PAGE_SEO_MAP.home;
+          updatePageSEO(config.title, config.description, config.path);
+
+          const targetId = section === "booking" ? "book" : section;
+          if (targetId && targetId !== "home") {
+            setTimeout(() => {
+              const el = document.getElementById(targetId);
+              if (el) {
+                const topOffset = el.offsetTop - 85;
+                window.scrollTo({ top: topOffset, behavior: "smooth" });
+              }
+            }, 150);
+          }
         }
       }
     };
@@ -673,6 +685,14 @@ export default function App() {
               adminUser={adminUser}
               onLoginWithCredentials={handleLoginWithCredentials}
               onLogout={handleAdminLogout}
+            />
+          )}
+
+          {currentView === "not-found" && (
+            <NotFound
+              onNavigateHome={() => handleNavigate("home")}
+              onNavigateLocations={() => handleNavigate("locations")}
+              onBookClick={() => handleBookClick()}
             />
           )}
         </main>

@@ -35,7 +35,7 @@ export const SITE_CONFIG = {
   instagramUrl: "https://www.instagram.com/akshaiunisexsalonpragathinagar",
 
   // Brand Assets
-  logoUrl: "/images/am-salon-logo.jpeg",
+  logoUrl: "/images/am-salon-logo.webp",
   heroImageUrl: "/images/reception-01.webp",
 
   // Multi-Branch Configurations

@@ -1,5 +1,5 @@
 import React from "react";
-import amSalonLogo from "../assets/am-salon-logo.jpeg";
+import amSalonLogo from "../assets/am-salon-logo.webp";
 
 interface LogoProps {
   className?: string;

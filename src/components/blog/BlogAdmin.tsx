@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { BlogArticle, BlogPost, BlogStatus } from "../../types";
 import { BLOG_CATEGORIES, PRESET_BLOG_IMAGES } from "./blogData";
+import { renderMarkdownBlocks } from "../../lib/markdown";
 
 interface BlogAdminProps {
   posts: (BlogArticle | BlogPost)[];
@@ -1101,8 +1102,12 @@ export default function BlogAdmin({
                       </p>
                     </div>
 
-                    <div className="p-5 rounded-lg bg-bg-dark/70 border border-white/5 text-xs text-luxury-cream/85 whitespace-pre-wrap font-body leading-relaxed">
-                      {formContent || "No content written yet."}
+                    <div className="p-5 rounded-lg bg-bg-dark/70 border border-white/5 font-body leading-relaxed">
+                      {formContent ? (
+                        renderMarkdownBlocks(formContent)
+                      ) : (
+                        <p className="text-xs text-luxury-cream/40 italic">No content written yet.</p>
+                      )}
                     </div>
                   </div>
                 )}

@@ -4,6 +4,7 @@ import { connectDB } from "./db";
 import authRoutes from "./routes/authRoutes";
 import blogRoutes from "./routes/blogRoutes";
 import uploadRoutes from "./routes/uploadRoutes";
+import sitemapRoutes from "./routes/sitemapRoutes";
 
 dotenv.config();
 
@@ -131,12 +132,25 @@ app.use("/blogs", blogRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/upload", uploadRoutes);
 
+// Dynamic Sitemap Routes (supporting /sitemap.xml and /api/sitemap.xml)
+app.use("/sitemap.xml", sitemapRoutes);
+app.use("/api/sitemap.xml", sitemapRoutes);
+app.use("/api/sitemap", sitemapRoutes);
+
 // Healthcheck
 app.get(["/api/health", "/health", "/api"], (req, res) => {
   res.status(200).json({
     status: "ok",
     service: "AM Unisex Salon API",
     timestamp: new Date().toISOString()
+  });
+});
+
+// Unknown API endpoints 404 handler
+app.use((req, res) => {
+  res.status(404).json({
+    error: "Not Found",
+    message: `API endpoint ${req.method} ${req.url} does not exist.`
   });
 });
 

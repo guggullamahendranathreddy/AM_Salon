@@ -13,6 +13,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import { BlogArticle, BlogPost } from "../../types";
+import { renderMarkdownBlocks } from "../../lib/markdown";
 import BlogCard from "./BlogCard";
 
 interface BlogDetailProps {
@@ -119,7 +120,7 @@ export default function BlogDetail({
         "url": "https://am-salon-three.vercel.app/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://am-salon-three.vercel.app/images/am-salon-logo.jpeg"
+          "url": "https://am-salon-three.vercel.app/images/am-salon-logo.webp"
         }
       },
       "mainEntityOfPage": {
@@ -161,142 +162,9 @@ export default function BlogDetail({
     )
     .slice(0, 3);
 
-  // Markdown-like content renderer
+  // Safe Markdown Block & Inline Link Renderer
   const renderFormattedContent = (content: string) => {
-    const lines = content.split("\n");
-    const elements: React.ReactNode[] = [];
-    let listBuffer: string[] = [];
-    let tableBuffer: string[] = [];
-
-    const flushList = (key: number) => {
-      if (listBuffer.length > 0) {
-        elements.push(
-          <ul key={`list-${key}`} className="my-4 space-y-2 list-none pl-2">
-            {listBuffer.map((item, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-luxury-cream/85 text-sm sm:text-base leading-relaxed">
-                <span className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 shrink-0" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        );
-        listBuffer = [];
-      }
-    };
-
-    const flushTable = (key: number) => {
-      if (tableBuffer.length > 0) {
-        const rows = tableBuffer
-          .map((row) =>
-            row
-              .split("|")
-              .map((c) => c.trim())
-              .filter((c, i, arr) => i > 0 && i < arr.length - 1)
-          )
-          .filter((row) => row.length > 0 && !row.every((c) => /^:?-+:?$/.test(c)));
-
-        if (rows.length > 0) {
-          const header = rows[0];
-          const body = rows.slice(1);
-
-          elements.push(
-            <div key={`table-${key}`} className="my-6 overflow-x-auto rounded-lg border border-secondary/20 shadow-md">
-              <table className="w-full text-left text-xs sm:text-sm text-luxury-cream/85">
-                <thead className="bg-bg-charcoal/90 text-secondary uppercase font-semibold border-b border-secondary/30">
-                  <tr>
-                    {header.map((col, idx) => (
-                      <th key={idx} className="px-4 py-3">
-                        {col}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-white/5 bg-bg-charcoal/40">
-                  {body.map((row, rIdx) => (
-                    <tr key={rIdx} className="hover:bg-white/5 transition-colors">
-                      {row.map((cell, cIdx) => (
-                        <td key={cIdx} className="px-4 py-3">
-                          {cell}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          );
-        }
-        tableBuffer = [];
-      }
-    };
-
-    for (let index = 0; index < lines.length; index++) {
-      const line = lines[index].trim();
-
-      if (line.startsWith("|") && line.endsWith("|")) {
-        flushList(index);
-        tableBuffer.push(line);
-        continue;
-      } else {
-        flushTable(index);
-      }
-
-      if (line.startsWith("- ") || line.startsWith("* ")) {
-        listBuffer.push(line.substring(2));
-        continue;
-      } else {
-        flushList(index);
-      }
-
-      if (line.startsWith("## ")) {
-        elements.push(
-          <h2
-            key={index}
-            className="font-display text-2xl sm:text-3xl font-bold text-luxury-cream mt-8 mb-4 border-b border-secondary/20 pb-2"
-          >
-            {line.substring(3)}
-          </h2>
-        );
-      } else if (line.startsWith("### ")) {
-        elements.push(
-          <h3
-            key={index}
-            className="font-display text-xl sm:text-2xl font-semibold text-secondary mt-6 mb-3"
-          >
-            {line.substring(4)}
-          </h3>
-        );
-      } else if (line.startsWith("> ")) {
-        elements.push(
-          <div
-            key={index}
-            className="my-5 rounded-r-lg border-l-4 border-secondary bg-secondary/10 p-4 sm:p-5 backdrop-blur-sm"
-          >
-            <p className="font-body italic text-sm sm:text-base text-luxury-cream leading-relaxed">
-              {line.substring(2)}
-            </p>
-          </div>
-        );
-      } else if (line.startsWith("---")) {
-        elements.push(
-          <hr key={index} className="my-8 border-t border-white/10" />
-        );
-      } else if (line.length > 0) {
-        elements.push(
-          <p
-            key={index}
-            className="font-body text-sm sm:text-base text-luxury-cream/80 leading-relaxed mb-4"
-          >
-            {line}
-          </p>
-        );
-      }
-    }
-
-    flushList(lines.length);
-    flushTable(lines.length);
-
-    return elements;
+    return renderMarkdownBlocks(content);
   };
 
   return (

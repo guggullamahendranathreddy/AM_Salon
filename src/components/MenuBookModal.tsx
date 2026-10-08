@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { X, ChevronLeft, ChevronRight, Phone, MessageSquare, BookOpen } from "lucide-react";
-import amSalonLogo from "../assets/am-salon-logo.jpeg";
+import amSalonLogo from "../assets/am-salon-logo.webp";
 
 interface MenuBookModalProps {
   isOpen: boolean;

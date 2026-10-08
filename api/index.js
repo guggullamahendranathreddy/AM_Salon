@@ -650,6 +650,62 @@ router3.post(
 );
 var uploadRoutes_default = router3;
 
+// server/routes/sitemapRoutes.ts
+import { Router as Router4 } from "express";
+var router4 = Router4();
+var STATIC_PAGES = [
+  { path: "/", priority: "1.0", changefreq: "weekly" },
+  { path: "/locations/nallagandla", priority: "0.95", changefreq: "weekly" },
+  { path: "/locations/pragathi-nagar", priority: "0.9", changefreq: "weekly" },
+  { path: "/locations", priority: "0.85", changefreq: "weekly" },
+  { path: "/services", priority: "0.9", changefreq: "weekly" },
+  { path: "/about", priority: "0.8", changefreq: "monthly" },
+  { path: "/booking", priority: "0.9", changefreq: "weekly" },
+  { path: "/gallery", priority: "0.7", changefreq: "monthly" },
+  { path: "/contact", priority: "0.8", changefreq: "monthly" },
+  { path: "/blog", priority: "0.8", changefreq: "weekly" }
+];
+var SITE_URL = (process.env.VITE_SITE_URL || "https://am-salon-three.vercel.app").replace(/\/$/, "");
+router4.get(["/", "/sitemap.xml", "/api/sitemap.xml", "/api/sitemap"], async (req, res) => {
+  let blogUrls = "";
+  try {
+    const conn = await connectDB();
+    if (conn) {
+      const publishedArticles = await Blog.find({ published: true }).select("slug publishedAt updatedAt createdAt").sort({ publishedAt: -1 }).lean();
+      for (const article of publishedArticles) {
+        if (!article.slug) continue;
+        const lastmodDate = article.updatedAt || article.publishedAt || article.createdAt || /* @__PURE__ */ new Date();
+        const lastmod = new Date(lastmodDate).toISOString().split("T")[0];
+        blogUrls += `
+  <url>
+    <loc>${SITE_URL}/blog/${encodeURIComponent(article.slug)}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>`;
+      }
+    }
+  } catch (err) {
+    console.error("Dynamic sitemap generation error:", err);
+  }
+  const staticUrls = STATIC_PAGES.map(
+    (page) => `
+  <url>
+    <loc>${SITE_URL}${page.path === "/" ? "/" : page.path}</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`
+  ).join("");
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${staticUrls}${blogUrls}
+</urlset>`;
+  res.setHeader("Content-Type", "application/xml; charset=utf-8");
+  res.setHeader("Cache-Control", "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400");
+  res.status(200).send(xml.trim());
+});
+var sitemapRoutes_default = router4;
+
 // server/serverless.ts
 dotenv.config();
 var app = express();
@@ -735,11 +791,20 @@ app.use("/api/blogs", blogRoutes_default);
 app.use("/blogs", blogRoutes_default);
 app.use("/api/upload", uploadRoutes_default);
 app.use("/upload", uploadRoutes_default);
+app.use("/sitemap.xml", sitemapRoutes_default);
+app.use("/api/sitemap.xml", sitemapRoutes_default);
+app.use("/api/sitemap", sitemapRoutes_default);
 app.get(["/api/health", "/health", "/api"], (req, res) => {
   res.status(200).json({
     status: "ok",
     service: "AM Unisex Salon API",
     timestamp: (/* @__PURE__ */ new Date()).toISOString()
+  });
+});
+app.use((req, res) => {
+  res.status(404).json({
+    error: "Not Found",
+    message: `API endpoint ${req.method} ${req.url} does not exist.`
   });
 });
 var serverless_default = app;

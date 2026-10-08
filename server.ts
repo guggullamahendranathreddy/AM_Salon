@@ -128,6 +128,7 @@ import { connectDB } from "./server/db";
 import authRoutes from "./server/routes/authRoutes";
 import blogRoutes from "./server/routes/blogRoutes";
 import uploadRoutes from "./server/routes/uploadRoutes";
+import sitemapRoutes from "./server/routes/sitemapRoutes";
 
 // Support both /api/* and /* for local & Vercel serverless function routing
 app.use("/api/auth", authRoutes);
@@ -138,6 +139,11 @@ app.use("/blogs", blogRoutes);
 
 app.use("/api/upload", uploadRoutes);
 app.use("/upload", uploadRoutes);
+
+// Dynamic Sitemap Routes
+app.use("/sitemap.xml", sitemapRoutes);
+app.use("/api/sitemap.xml", sitemapRoutes);
+app.use("/api/sitemap", sitemapRoutes);
 
 
 

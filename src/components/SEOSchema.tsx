@@ -12,7 +12,8 @@ interface SEOSchemaProps {
     | "admin"
     | "locations"
     | "location-nallagandla"
-    | "location-pragathi-nagar";
+    | "location-pragathi-nagar"
+    | "not-found";
   selectedBlog?: BlogArticle | BlogPost | null;
 }
 
@@ -178,7 +179,7 @@ export default function SEOSchema({ currentView = "home", selectedBlog }: SEOSch
           "url": `${base}/`,
         },
         "url": `${base}/locations/nallagandla`,
-        "logo": `${base}/images/am-salon-logo.jpeg`,
+        "logo": `${base}/images/am-salon-logo.webp`,
         "image": [
           `${base}/images/nallagandla-salon-interior-main-01.jpg`,
           `${base}/images/nallagandla-styling-stations-manicure-01.jpg`,
@@ -243,7 +244,7 @@ export default function SEOSchema({ currentView = "home", selectedBlog }: SEOSch
           "url": `${base}/`,
         },
         "url": `${base}/locations/pragathi-nagar`,
-        "logo": `${base}/images/am-salon-logo.jpeg`,
+        "logo": `${base}/images/am-salon-logo.webp`,
         "image": [
           `${base}/images/reception-01.webp`,
           `${base}/images/hair-wash-station-01.webp`,
