@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Calendar, Phone, MessageSquare, Clock, FileText, User, Sparkle, ArrowRight, ShieldCheck, Heart, Instagram } from "lucide-react";
+import { Calendar, Phone, MessageSquare, Clock, FileText, User, Sparkle, ArrowRight, ShieldCheck, Heart, Instagram, MapPin, Building2 } from "lucide-react";
 import { SERVICE_ITEMS } from "../data";
 
 interface BookingFormProps {
   selectedService: string;
+  selectedBranch?: string;
   onClearService: () => void;
 }
 
-export default function BookingForm({ selectedService, onClearService }: BookingFormProps) {
+export default function BookingForm({ selectedService, selectedBranch, onClearService }: BookingFormProps) {
   const [formData, setFormData] = useState({
+    branch: selectedBranch || "Nallagandla",
     name: "",
     phone: "",
     service: "",
@@ -22,6 +24,7 @@ export default function BookingForm({ selectedService, onClearService }: Booking
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successData, setSuccessData] = useState<{
     id: string;
+    branch: string;
     name: string;
     phone: string;
     service: string;
@@ -36,6 +39,12 @@ export default function BookingForm({ selectedService, onClearService }: Booking
       setFormData((prev) => ({ ...prev, service: selectedService }));
     }
   }, [selectedService]);
+
+  useEffect(() => {
+    if (selectedBranch) {
+      setFormData((prev) => ({ ...prev, branch: selectedBranch }));
+    }
+  }, [selectedBranch]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -54,7 +63,7 @@ export default function BookingForm({ selectedService, onClearService }: Booking
     setErrorMsg(null);
 
     // Clientside basic checks
-    if (!formData.name.trim() || !formData.phone.trim() || !formData.service || !formData.date || !formData.time) {
+    if (!formData.name.trim() || !formData.phone.trim() || !formData.service || !formData.date || !formData.time || !formData.branch) {
       setErrorMsg("Please fill in all mandatory fields before booking.");
       return;
     }
@@ -85,6 +94,7 @@ export default function BookingForm({ selectedService, onClearService }: Booking
       // Capture Success structure
       setSuccessData({
         id: data.bookingId,
+        branch: formData.branch,
         name: formData.name,
         phone: formData.phone,
         service: formData.service,
@@ -94,11 +104,12 @@ export default function BookingForm({ selectedService, onClearService }: Booking
       });
 
       // Assemble WhatsApp Redirect link
-      const textMessage = `Hello AM Unisex Salon,\n\nName: ${formData.name}\nPhone: ${formData.phone}\nService: ${formData.service}\nPreferred Date: ${formData.date}\nPreferred Time: ${formData.time}\nNotes: ${formData.notes || "None"}\n\nI would like to book an appointment.`;
+      const textMessage = `Hello AM Unisex Salon,\n\nBranch: ${formData.branch} (${formData.branch === "Nallagandla" ? "HYTEK ARCADE" : "Near Shiva Medicals"})\nName: ${formData.name}\nPhone: ${formData.phone}\nService: ${formData.service}\nPreferred Date: ${formData.date}\nPreferred Time: ${formData.time}\nNotes: ${formData.notes || "None"}\n\nI would like to book an appointment.`;
       const whatsappUrl = `https://wa.me/917569979965?text=${encodeURIComponent(textMessage)}`;
 
       // Reset local inputs
       setFormData({
+        branch: "Nallagandla",
         name: "",
         phone: "",
         service: "",
@@ -137,7 +148,7 @@ export default function BookingForm({ selectedService, onClearService }: Booking
               Book an Appointment at <span className="text-gradient">AM Unisex Salon</span>
             </h2>
             <p className="text-sm text-luxury-cream/65 font-body leading-relaxed mb-8 font-light">
-              We look forward to hosting you at our salon in Pragathi Nagar, Hyderabad! Fill out this booking form to reserve your chair. Your requested timing is forwarded straight to our staff over WhatsApp for instant confirmation.
+              We look forward to hosting you at our salon branches in <strong>Nallagandla</strong> (HYTEK ARCADE) and <strong>Pragathi Nagar</strong>, Hyderabad! Fill out this booking form to reserve your chair. Your requested timing is forwarded straight to our staff over WhatsApp for instant confirmation.
             </p>
 
             {/* Quick action buttons */}
@@ -152,7 +163,10 @@ export default function BookingForm({ selectedService, onClearService }: Booking
                 <div className="h-10 w-10 rounded-full bg-[#1e4620]/20 flex items-center justify-center text-[#25D366] shrink-0">
                   <MessageSquare className="w-5 h-5 text-[#25D366] fill-[#25D366]/10" />
                 </div>
-                <h4 className="text-xs uppercase tracking-wider font-bold text-white font-body">Chat on WhatsApp</h4>
+                <div className="text-left">
+                  <h4 className="text-xs uppercase tracking-wider font-bold text-white font-body">Chat on WhatsApp</h4>
+                  <p className="text-[10px] text-luxury-cream/50 font-body">Instant WhatsApp confirmation</p>
+                </div>
               </a>
 
               <a
@@ -162,7 +176,10 @@ export default function BookingForm({ selectedService, onClearService }: Booking
                 <div className="h-10 w-10 rounded-full bg-[#3d1a1e]/20 flex items-center justify-center text-secondary shrink-0">
                   <Phone className="w-5 h-5 text-secondary" />
                 </div>
-                <h4 className="text-xs uppercase tracking-wider font-bold text-white font-body">Call Us Directly</h4>
+                <div className="text-left">
+                  <h4 className="text-xs uppercase tracking-wider font-bold text-white font-body">Call Us Directly</h4>
+                  <p className="text-[10px] text-luxury-cream/50 font-body">+91 75699 79965</p>
+                </div>
               </a>
 
               <a
@@ -174,7 +191,10 @@ export default function BookingForm({ selectedService, onClearService }: Booking
                 <div className="h-10 w-10 rounded-full bg-slate-500/10 flex items-center justify-center text-white shrink-0">
                   <Instagram className="w-5 h-5 text-purple-400" />
                 </div>
-                <h4 className="text-xs uppercase tracking-wider font-bold text-white font-body">Follow on Instagram</h4>
+                <div className="text-left">
+                  <h4 className="text-xs uppercase tracking-wider font-bold text-white font-body">Follow on Instagram</h4>
+                  <p className="text-[10px] text-luxury-cream/50 font-body">@akshaiunisexsalonpragathinagar</p>
+                </div>
               </a>
 
             </div>
@@ -203,6 +223,47 @@ export default function BookingForm({ selectedService, onClearService }: Booking
                     {errorMsg}
                   </div>
                 )}
+
+                {/* Branch Selection */}
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-widest text-accent mb-2 font-body">
+                    Select Salon Branch *
+                  </label>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setFormData((p) => ({ ...p, branch: "Nallagandla" }))}
+                      className={`p-3.5 rounded-sm border text-left transition-all cursor-pointer ${
+                        formData.branch === "Nallagandla"
+                          ? "bg-primary/30 border-secondary ring-1 ring-secondary/50 text-white"
+                          : "bg-bg-dark border-white/5 text-luxury-cream/70 hover:border-white/20"
+                      }`}
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <MapPin className="w-3.5 h-3.5 text-secondary" />
+                        <span className="text-xs font-bold uppercase font-body text-white">Nallagandla</span>
+                        <span className="text-[9px] bg-secondary/20 text-secondary px-1.5 py-0.2 rounded font-semibold uppercase">Primary</span>
+                      </div>
+                      <p className="text-[10px] text-luxury-cream/60 font-body mt-1 truncate">HYTEK ARCADE</p>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setFormData((p) => ({ ...p, branch: "Pragathi Nagar" }))}
+                      className={`p-3.5 rounded-sm border text-left transition-all cursor-pointer ${
+                        formData.branch === "Pragathi Nagar"
+                          ? "bg-primary/30 border-secondary ring-1 ring-secondary/50 text-white"
+                          : "bg-bg-dark border-white/5 text-luxury-cream/70 hover:border-white/20"
+                      }`}
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <Building2 className="w-3.5 h-3.5 text-accent" />
+                        <span className="text-xs font-bold uppercase font-body text-white">Pragathi Nagar</span>
+                      </div>
+                      <p className="text-[10px] text-luxury-cream/60 font-body mt-1 truncate">Near Shiva Medicals</p>
+                    </button>
+                  </div>
+                </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   {/* Full Name */}
@@ -444,6 +505,9 @@ export default function BookingForm({ selectedService, onClearService }: Booking
               </p>
 
               <div className="text-left bg-bg-dark p-5 rounded border border-white/5 space-y-2 mb-6">
+                <p className="text-xs text-secondary font-bold font-body">
+                  Branch: <span className="text-white">{successData.branch}</span>
+                </p>
                 <p className="text-xs text-luxury-cream/70 font-body">
                   Client Name: <span className="text-white font-bold">{successData.name}</span>
                 </p>
@@ -456,12 +520,12 @@ export default function BookingForm({ selectedService, onClearService }: Booking
               </div>
 
               <p className="text-xs text-luxury-cream/50 font-body leading-relaxed mb-6">
-                We are launching WhatsApp to securely synchronize this request with Manish and Pookar at the reception desk. If WhatsApp doesn't open automatically, please click below.
+                We are launching WhatsApp to securely synchronize this request with the reception desk. If WhatsApp doesn't open automatically, please click below.
               </p>
 
               <button
                 onClick={() => {
-                  const textMessage = `Hello AM Unisex Salon,\n\nName: ${successData.name}\nPhone: ${successData.phone}\nService: ${successData.service}\nPreferred Date: ${successData.date}\nPreferred Time: ${successData.time}\nNotes: ${successData.notes || "None"}\n\nI would like to book an appointment.`;
+                  const textMessage = `Hello AM Unisex Salon,\n\nBranch: ${successData.branch}\nName: ${successData.name}\nPhone: ${successData.phone}\nService: ${successData.service}\nPreferred Date: ${successData.date}\nPreferred Time: ${successData.time}\nNotes: ${successData.notes || "None"}\n\nI would like to book an appointment.`;
                   window.open(`https://wa.me/917569979965?text=${encodeURIComponent(textMessage)}`, "_blank");
                   setSuccessData(null);
                 }}
@@ -475,7 +539,7 @@ export default function BookingForm({ selectedService, onClearService }: Booking
                 onClick={() => {
                   setSuccessData(null);
                 }}
-                className="w-full py-3 mt-2 text-xs font-semibold tracking-wider uppercase text-luxury-cream/40 hover:text-white transition-colors"
+                className="w-full py-3 mt-2 text-xs font-semibold tracking-wider uppercase text-luxury-cream/40 hover:text-white transition-colors cursor-pointer"
               >
                 Close Window
               </button>

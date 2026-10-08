@@ -681,7 +681,7 @@ app.post(
   ["/api/book", "/book"],
   createRateLimiter({ windowMs: 60 * 1e3, max: 3 }),
   (req, res) => {
-    const { name, phone, service, date, time, notes } = req.body;
+    const { branch, name, phone, service, date, time, notes } = req.body;
     if (!name || !phone || !service || !date || !time) {
       res.status(400).json({ error: "Missing fields", message: "Please fill in all required fields." });
       return;
@@ -689,6 +689,7 @@ app.post(
     const bookingId = "AK-" + Math.random().toString(36).substr(2, 9).toUpperCase();
     const newReservation = {
       id: bookingId,
+      branch: branch || "Nallagandla",
       name,
       phone,
       service,

@@ -24,7 +24,7 @@ export default function Hero({ onBookClick, onServicesClick }: HeroProps) {
       title: "AM Unisex Salon – Premium Unisex Salon in Hyderabad",
       label: "AM UNISEX SALON • HYDERABAD",
       subTitle:
-        "Experience Hyderabad's premier destination in Pragathi Nagar for luxury haircuts, restorative hair spa, skin facials, and grooming.",
+        "Experience Hyderabad's premier destination in Nallagandla and Pragathi Nagar for luxury haircuts, restorative hair spa, skin facials, and grooming.",
       alt: "AM Unisex Salon interior reception lounge in Hyderabad",
     },
     {
@@ -112,7 +112,7 @@ export default function Hero({ onBookClick, onServicesClick }: HeroProps) {
           >
             AM Unisex Salon – <span className="text-gradient">Premium Unisex Salon in Hyderabad</span>
             <span className="mt-3 block font-body text-xs font-semibold uppercase tracking-widest text-luxury-cream/80 sm:text-sm md:text-lg">
-              Professional Haircuts • Hair Spa • Facials • Men & Women Grooming in Pragathi Nagar
+              Professional Haircuts • Hair Spa • Facials • Men & Women Grooming in Nallagandla & Pragathi Nagar
             </span>
           </motion.h1>
 
@@ -124,7 +124,7 @@ export default function Hero({ onBookClick, onServicesClick }: HeroProps) {
           >
             {slides[currentIndex].subTitle}
             <span className="mt-1 block font-medium text-accent">
-              Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad.
+              Branches in Nallagandla (HYTEK ARCADE) and Pragathi Nagar, Hyderabad.
             </span>
           </motion.p>
 

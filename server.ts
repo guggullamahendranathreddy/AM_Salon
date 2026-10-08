@@ -48,6 +48,7 @@ function createRateLimiter(config: RateLimitConfig) {
 // Global In-Memory Store for active/pending reservations during server lifecycle
 const reservationStore: Array<{
   id: string;
+  branch?: string;
   name: string;
   phone: string;
   service: string;
@@ -62,7 +63,7 @@ app.post(
   "/api/book",
   createRateLimiter({ windowMs: 60 * 1000, max: 3 }),
   (req, res) => {
-    const { name, phone, service, date, time, notes } = req.body;
+    const { branch, name, phone, service, date, time, notes } = req.body;
 
     if (!name || !phone || !service || !date || !time) {
       res.status(400).json({ error: "Missing fields", message: "Please fill in all required fields." });
@@ -73,6 +74,7 @@ app.post(
     const bookingId = "AK-" + Math.random().toString(36).substr(2, 9).toUpperCase();
     const newReservation = {
       id: bookingId,
+      branch: branch || "Nallagandla",
       name,
       phone,
       service,

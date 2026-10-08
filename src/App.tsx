@@ -15,6 +15,11 @@ import Location from "./components/Location";
 import Footer from "./components/Footer";
 import FloatingFAB from "./components/FloatingFAB";
 
+// Location Pages
+import LocationsHub from "./components/locations/LocationsHub";
+import NallagandlaLocation from "./components/locations/NallagandlaLocation";
+import PragathiNagarLocation from "./components/locations/PragathiNagarLocation";
+
 // Blog Components
 import BlogList from "./components/blog/BlogList";
 import BlogDetail from "./components/blog/BlogDetail";
@@ -35,7 +40,14 @@ import {
 } from "./lib/api";
 import { SITE_CONFIG } from "./config/site";
 
-type AppView = "home" | "blog" | "blog-detail" | "admin";
+export type AppView =
+  | "home"
+  | "blog"
+  | "blog-detail"
+  | "admin"
+  | "locations"
+  | "location-nallagandla"
+  | "location-pragathi-nagar";
 
 const BASE_CANONICAL_URL = SITE_CONFIG.siteUrl;
 
@@ -90,7 +102,7 @@ const PAGE_SEO_MAP: Record<string, { title: string; description: string; path: s
   about: {
     title: "About AM Unisex Salon | Family Salon in Hyderabad",
     description:
-      "Learn about AM Unisex Salon, Hyderabad's trusted family salon offering hygienic haircuts, premium beauty treatments, and experienced master stylists.",
+      "Learn about AM Unisex Salon, Hyderabad's trusted family salon offering hygienic haircuts, premium beauty treatments, and experienced master stylists across Hyderabad.",
     path: "/about",
   },
   gallery: {
@@ -102,14 +114,32 @@ const PAGE_SEO_MAP: Record<string, { title: string; description: string; path: s
   booking: {
     title: "Book Salon Appointment | AM Unisex Salon Hyderabad",
     description:
-      "Book an appointment online at AM Unisex Salon in Hyderabad. Haircuts, hair spa, facials and grooming with instant WhatsApp confirmation.",
+      "Book an appointment online at AM Unisex Salon in Hyderabad. Select your branch (Nallagandla or Pragathi Nagar) with instant WhatsApp confirmation.",
     path: "/booking",
   },
   contact: {
-    title: "Contact AM Unisex Salon | Near Shiva Medicals Hyderabad",
+    title: "Contact AM Unisex Salon | Hyderabad Branches",
     description:
-      "Visit AM Unisex Salon Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad. Call +91 75699 79965 or visit Monday–Sunday 9:00 AM–9:00 PM.",
+      "Visit AM Unisex Salon in Nallagandla (HYTEK ARCADE) or Pragathi Nagar (Near Shiva Medicals), Hyderabad. Call +91 75699 79965 or visit 9:00 AM–9:00 PM.",
     path: "/contact",
+  },
+  locations: {
+    title: "Salon Locations in Hyderabad | AM Unisex Salon",
+    description:
+      "AM Unisex Salon operates two modern physical branches in Hyderabad: Nallagandla (HYTEK ARCADE) and Pragathi Nagar. View addresses, maps, and book appointments.",
+    path: "/locations",
+  },
+  "location-nallagandla": {
+    title: "AM Unisex Salon Nallagandla | Unisex Salon in Nallagandla Hyderabad",
+    description:
+      "Visit AM Unisex Salon in Nallagandla, Hyderabad at HYTEK ARCADE. Premium haircuts, Pro-Keratin, Molecular Hair Botox, restorative hair spa & skin facials. Open 7 days.",
+    path: "/locations/nallagandla",
+  },
+  "location-pragathi-nagar": {
+    title: "AM Unisex Salon Pragathi Nagar | Unisex Salon in Pragathi Nagar Hyderabad",
+    description:
+      "AM Unisex Salon in Pragathi Nagar, Hyderabad Near Shiva Medicals offers haircuts for men & women, hair spa, keratin, hair botox, and skin facials. Open 7 days.",
+    path: "/locations/pragathi-nagar",
   },
   blog: {
     title: "Hair Care & Beauty Blog | AM Unisex Salon Hyderabad",
@@ -126,6 +156,7 @@ const PAGE_SEO_MAP: Record<string, { title: string; description: string; path: s
 
 export default function App() {
   const [selectedService, setSelectedService] = useState("");
+  const [selectedBranch, setSelectedBranch] = useState("Nallagandla");
   const [currentView, setCurrentView] = useState<AppView>("home");
   const [selectedBlog, setSelectedBlog] = useState<BlogArticle | BlogPost | null>(null);
   const [posts, setPosts] = useState<(BlogArticle | BlogPost)[]>([]);
@@ -180,7 +211,37 @@ export default function App() {
       const hash = window.location.hash;
       const pathname = window.location.pathname.toLowerCase().replace(/\/$/, "");
 
-      if (hash === "#blog" || pathname === "/blog") {
+      if (hash === "#locations/nallagandla" || pathname === "/locations/nallagandla") {
+        setCurrentView("location-nallagandla");
+        setSelectedBlog(null);
+        updatePageSEO(
+          PAGE_SEO_MAP["location-nallagandla"].title,
+          PAGE_SEO_MAP["location-nallagandla"].description,
+          "/locations/nallagandla"
+        );
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else if (
+        hash === "#locations/pragathi-nagar" ||
+        pathname === "/locations/pragathi-nagar"
+      ) {
+        setCurrentView("location-pragathi-nagar");
+        setSelectedBlog(null);
+        updatePageSEO(
+          PAGE_SEO_MAP["location-pragathi-nagar"].title,
+          PAGE_SEO_MAP["location-pragathi-nagar"].description,
+          "/locations/pragathi-nagar"
+        );
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else if (hash === "#locations" || pathname === "/locations") {
+        setCurrentView("locations");
+        setSelectedBlog(null);
+        updatePageSEO(
+          PAGE_SEO_MAP.locations.title,
+          PAGE_SEO_MAP.locations.description,
+          "/locations"
+        );
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else if (hash === "#blog" || pathname === "/blog") {
         setCurrentView("blog");
         setSelectedBlog(null);
         updatePageSEO(PAGE_SEO_MAP.blog.title, PAGE_SEO_MAP.blog.description, "/blog");
@@ -288,7 +349,16 @@ export default function App() {
   }, [fetchPosts]);
 
   // Navigation controller
-  const handleNavigate = (view: "home" | "blog" | "admin", targetSection?: string) => {
+  const handleNavigate = (
+    view:
+      | "home"
+      | "blog"
+      | "admin"
+      | "locations"
+      | "location-nallagandla"
+      | "location-pragathi-nagar",
+    targetSection?: string
+  ) => {
     if (view === "home") {
       setCurrentView("home");
       setSelectedBlog(null);
@@ -310,6 +380,32 @@ export default function App() {
         window.location.hash = "#home";
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
+    } else if (view === "locations") {
+      setCurrentView("locations");
+      setSelectedBlog(null);
+      updatePageSEO(PAGE_SEO_MAP.locations.title, PAGE_SEO_MAP.locations.description, "/locations");
+      window.location.hash = "#locations";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (view === "location-nallagandla") {
+      setCurrentView("location-nallagandla");
+      setSelectedBlog(null);
+      updatePageSEO(
+        PAGE_SEO_MAP["location-nallagandla"].title,
+        PAGE_SEO_MAP["location-nallagandla"].description,
+        "/locations/nallagandla"
+      );
+      window.location.hash = "#locations/nallagandla";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (view === "location-pragathi-nagar") {
+      setCurrentView("location-pragathi-nagar");
+      setSelectedBlog(null);
+      updatePageSEO(
+        PAGE_SEO_MAP["location-pragathi-nagar"].title,
+        PAGE_SEO_MAP["location-pragathi-nagar"].description,
+        "/locations/pragathi-nagar"
+      );
+      window.location.hash = "#locations/pragathi-nagar";
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (view === "blog") {
       setCurrentView("blog");
       setSelectedBlog(null);
@@ -345,7 +441,13 @@ export default function App() {
   };
 
   // Book appointment handler
-  const handleBookClick = () => {
+  const handleBookClick = (service?: string, branch?: string) => {
+    if (service) {
+      setSelectedService(service);
+    }
+    if (branch) {
+      setSelectedBranch(branch);
+    }
     if (currentView !== "home") {
       setCurrentView("home");
     }
@@ -380,7 +482,7 @@ export default function App() {
   const handleServiceSelect = (serviceName: string) => {
     setSelectedService(serviceName);
     setTimeout(() => {
-      handleBookClick();
+      handleBookClick(serviceName);
     }, 100);
   };
 
@@ -487,7 +589,7 @@ export default function App() {
           onNavigate={handleNavigate}
         />
 
-        {/* View Switcher: Home vs Blog vs Detail vs Admin */}
+        {/* View Switcher */}
         <main>
           {currentView === "home" && (
             <>
@@ -518,12 +620,25 @@ export default function App() {
               {/* Full-stack Booking Form */}
               <BookingForm
                 selectedService={selectedService}
+                selectedBranch={selectedBranch}
                 onClearService={() => setSelectedService("")}
               />
 
-              {/* Visible Physical Storefront & Google Maps Location */}
-              <Location onBookClick={handleBookClick} />
+              {/* Visible Physical Storefront & Google Maps Locations */}
+              <Location onBookClick={handleBookClick} onNavigate={handleNavigate} />
             </>
+          )}
+
+          {currentView === "locations" && (
+            <LocationsHub onBookClick={handleBookClick} onNavigate={handleNavigate} />
+          )}
+
+          {currentView === "location-nallagandla" && (
+            <NallagandlaLocation onBookClick={handleBookClick} onNavigate={handleNavigate} />
+          )}
+
+          {currentView === "location-pragathi-nagar" && (
+            <PragathiNagarLocation onBookClick={handleBookClick} onNavigate={handleNavigate} />
           )}
 
           {currentView === "blog" && (
