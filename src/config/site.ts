@@ -54,8 +54,12 @@ export const SITE_CONFIG = {
         addressRegion: "Telangana",
         postalCode: "500046",
         addressCountry: "IN",
-        fullAddress: "Plot No. 87 & 88, Block B 201, HYTEK ARCADE, Kancha Gachibowli Road, Nallagandla, Serilingampalle (M), Hyderabad, Telangana 500046, India",
+        fullAddress: "Plot No. 87 & 88, Block B 201, HYTEK ARCADE, Kancha Gachibowli Road, Nallagandla, Hyderabad, Telangana 500046, India",
         landmark: "HYTEK ARCADE, Kancha Gachibowli Road, near Aparna Sarovar, opposite Spice Kitchen",
+      },
+      geo: {
+        latitude: 17.472714,
+        longitude: 78.315582,
       },
       phone: "+917569979965",
       formattedPhone: "+91 75699 79965",
@@ -67,7 +71,7 @@ export const SITE_CONFIG = {
       canonicalPath: "/locations/nallagandla",
       areasServed: [
         "Nallagandla",
-        "Serilingampally",
+        "Serilingampalle",
         "Aparna Sarovar",
         "Tellapur",
         "Gachibowli",
@@ -80,16 +84,18 @@ export const SITE_CONFIG = {
     pragathiNagar: {
       id: "pragathi-nagar",
       branchName: "AM Unisex Salon — Pragathi Nagar",
+      listingName: "Am Akshai Unisex Salon",
       shortName: "Pragathi Nagar",
       isPrimary: false,
       tagline: "Unisex Family Salon in Pragathi Nagar, Kukatpally",
       address: {
-        streetAddress: "Near Shiva Medicals, 3rd Layout, Pragathi Nagar",
+        doorNo: "6-300012",
+        streetAddress: "6-300012, near Shiva Medicals, 3rd Layout, Pragathi Nagar",
         addressLocality: "Pragathi Nagar",
         addressRegion: "Telangana",
         postalCode: "500090",
         addressCountry: "IN",
-        fullAddress: "Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India",
+        fullAddress: "6-300012, near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India",
         landmark: "Near Shiva Medicals, 3rd Layout",
       },
       geo: {
@@ -99,9 +105,9 @@ export const SITE_CONFIG = {
       phone: "+917569979965",
       formattedPhone: "+91 75699 79965",
       whatsappNumber: "917569979965",
-      googleMapsCid: "14103202395395251575",
-      googleMapsPlaceUrl: "https://maps.google.com/?cid=14103202395395251575",
-      googleMapsDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=17.5165991,78.3892702",
+      placeId: "ChIJDZFPymePyzsR0XnQiH8WQk4",
+      googleMapsPlaceUrl: "https://www.google.com/maps/search/?api=1&query=Am+Akshai+Unisex+Salon+Pragathi+Nagar&query_place_id=ChIJDZFPymePyzsR0XnQiH8WQk4",
+      googleMapsDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=17.5165991,78.3892702&destination_place_id=ChIJDZFPymePyzsR0XnQiH8WQk4",
       googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.8105574518427!2d78.3892702!3d17.5165991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91c53e8e2d45%3A0xc3b8a3db4cf8dd77!2sAkshai%20Unisex%20Salon!5e0!3m2!1sen!2sin!4v1700000000000",
       canonicalPath: "/locations/pragathi-nagar",
       areasServed: [
@@ -116,14 +122,14 @@ export const SITE_CONFIG = {
     },
   },
 
-  // Legacy address fallback
+  // Primary address fallback
   address: {
     streetAddress: "Plot No. 87 & 88, Block B 201, HYTEK ARCADE, Kancha Gachibowli Road, Nallagandla",
     addressLocality: "Nallagandla & Pragathi Nagar",
     addressRegion: "Telangana",
     postalCode: "500046",
     addressCountry: "IN",
-    fullAddress: "Plot No. 87 & 88, Block B 201, HYTEK ARCADE, Kancha Gachibowli Road, Nallagandla, Serilingampalle (M), Hyderabad, Telangana 500046, India",
+    fullAddress: "Plot No. 87 & 88, Block B 201, HYTEK ARCADE, Kancha Gachibowli Road, Nallagandla, Hyderabad, Telangana 500046, India",
   },
   
   googleMapsPlaceUrl: "https://www.google.com/maps/search/?api=1&query=AM+Unisex+Salon+Nallagandla&query_place_id=ChIJvYgW0eaTyzsR5RXPS5AUPoA",
@@ -133,14 +139,18 @@ export const SITE_CONFIG = {
   areasServed: [
     "Nallagandla",
     "Pragathi Nagar",
-    "Serilingampally",
+    "Serilingampalle",
     "Aparna Sarovar",
     "Tellapur",
     "Gachibowli",
+    "Financial District",
+    "BHEL",
+    "Chandanagar",
     "Kukatpally",
     "Nizampet",
     "Bachupally",
     "Miyapur",
+    "JNTU",
     "Hyderabad",
   ],
 };

@@ -288,12 +288,12 @@ export const FAQS: FAQItem[] = [
   {
     id: "f1",
     question: "Where is AM Unisex Salon located?",
-    answer: "AM Unisex Salon is conveniently located Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India.",
+    answer: "AM Unisex Salon operates two physical branches in Hyderabad: our primary branch in Nallagandla (Plot No. 87 & 88, Block B 201, HYTEK ARCADE, Kancha Gachibowli Road) and our branch in Pragathi Nagar (6-300012, near Shiva Medicals, 3rd Layout). Both branches offer complete unisex salon and beauty services.",
   },
   {
     id: "f2",
     question: "What are the opening hours?",
-    answer: "AM Unisex Salon is open all 7 days a week, Monday through Sunday, from 9:00 AM to 9:00 PM.",
+    answer: "AM Unisex Salon is open all 7 days a week, Monday through Sunday, from 9:00 AM to 9:00 PM at both our Nallagandla and Pragathi Nagar branches.",
   },
   {
     id: "f3",
@@ -308,7 +308,7 @@ export const FAQS: FAQItem[] = [
   {
     id: "f5",
     question: "How can I book an appointment?",
-    answer: "You can book easily online through our website's booking form, call our reception directly at +91 75699 79965, or connect with us on WhatsApp for quick confirmation.",
+    answer: "You can book easily online through our website's booking form by choosing your preferred branch (Nallagandla or Pragathi Nagar), call our reception directly at +91 75699 79965, or connect with us on WhatsApp for quick confirmation.",
   },
   {
     id: "f6",
@@ -318,7 +318,7 @@ export const FAQS: FAQItem[] = [
   {
     id: "f7",
     question: "Is secure four-wheeler and two-wheeler parking available?",
-    answer: "Yes, convenient parking space is available for both two-wheelers and family cars near Shiva Medicals, Pragathi Nagar.",
+    answer: "Yes, convenient parking space for both two-wheelers and family cars is available at our Nallagandla branch (HYTEK ARCADE) and Pragathi Nagar branch (near Shiva Medicals).",
   },
   {
     id: "f8",
@@ -327,8 +327,8 @@ export const FAQS: FAQItem[] = [
   },
   {
     id: "f9",
-    question: "Which areas in Hyderabad do clients visit AM Unisex Salon from?",
-    answer: "While located Near Shiva Medicals in Pragathi Nagar, we regularly welcome guests from across Hyderabad, including Nallagandla, Serilingampally, Kukatpally, Bachupally, Nizampet, and Miyapur for expert hair botox, keratin treatments, facials, and grooming.",
+    question: "Which areas in Hyderabad do AM Unisex Salon branches serve?",
+    answer: "Our Nallagandla branch serves Nallagandla, Serilingampalle, Aparna Sarovar, Tellapur, Gachibowli, Financial District, BHEL, and Chandanagar. Our Pragathi Nagar branch serves Pragathi Nagar, Kukatpally, Nizampet, Bachupally, Miyapur, and JNTU.",
   },
   {
     id: "f10",

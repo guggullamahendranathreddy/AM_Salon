@@ -250,7 +250,7 @@ export default function PragathiNagarLocation({ onBookClick, onNavigate }: Praga
           <div className="lg:col-span-7 rounded-lg overflow-hidden border border-white/10 bg-bg-charcoal shadow-2xl relative min-h-[360px] flex flex-col">
             <div className="p-3 bg-bg-dark/90 border-b border-white/5 flex items-center justify-between px-4 text-xs">
               <span className="text-luxury-cream/80 font-body flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-secondary" /> Near Shiva Medicals, Pragathi Nagar, Hyderabad
+                <MapPin className="w-3.5 h-3.5 text-secondary" /> 6-300012, near Shiva Medicals, Pragathi Nagar, Hyderabad
               </span>
               <a
                 href={branch.googleMapsPlaceUrl}

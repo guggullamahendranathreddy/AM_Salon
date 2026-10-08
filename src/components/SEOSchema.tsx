@@ -173,6 +173,7 @@ export default function SEOSchema({ currentView = "home", selectedBlog }: SEOSch
         "name": "AM Unisex Salon — Nallagandla",
         "parentOrganization": {
           "@type": "Organization",
+          "@id": `${base}/#organization`,
           "name": "AM Unisex Salon",
           "url": `${base}/`,
         },
@@ -194,6 +195,11 @@ export default function SEOSchema({ currentView = "home", selectedBlog }: SEOSch
           "addressRegion": "Telangana",
           "postalCode": "500046",
           "addressCountry": "IN",
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 17.472714,
+          "longitude": 78.315582,
         },
         "hasMap": NALLAGANDLA_BRANCH.googleMapsPlaceUrl,
         "openingHoursSpecification": [
@@ -229,8 +235,10 @@ export default function SEOSchema({ currentView = "home", selectedBlog }: SEOSch
         "@type": ["HairSalon", "BeautySalon", "HealthAndBeautyBusiness"],
         "@id": `${base}/locations/pragathi-nagar#hairsalon`,
         "name": "AM Unisex Salon — Pragathi Nagar",
+        "alternateName": "Am Akshai Unisex Salon",
         "parentOrganization": {
           "@type": "Organization",
+          "@id": `${base}/#organization`,
           "name": "AM Unisex Salon",
           "url": `${base}/`,
         },
@@ -247,7 +255,7 @@ export default function SEOSchema({ currentView = "home", selectedBlog }: SEOSch
         "paymentAccepted": "Cash, UPI, Credit Card, Debit Card",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Near Shiva Medicals, 3rd Layout, Pragathi Nagar",
+          "streetAddress": "6-300012, near Shiva Medicals, 3rd Layout, Pragathi Nagar",
           "addressLocality": "Pragathi Nagar",
           "addressRegion": "Telangana",
           "postalCode": "500090",

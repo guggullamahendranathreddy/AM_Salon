@@ -3,11 +3,14 @@ import { FAQItem } from "./types";
 export interface BranchLocationData {
   id: string;
   name: string;
+  listingName?: string;
   shortName: string;
   tagline: string;
   isPrimary: boolean;
   address: {
     building?: string;
+    plotNo?: string;
+    doorNo?: string;
     streetAddress: string;
     locality: string;
     city: string;
@@ -15,6 +18,10 @@ export interface BranchLocationData {
     pincode: string;
     fullAddress: string;
     landmark: string;
+  };
+  geo?: {
+    latitude: number;
+    longitude: number;
   };
   phone: string;
   formattedPhone: string;
@@ -82,13 +89,18 @@ export const NALLAGANDLA_BRANCH: BranchLocationData = {
   isPrimary: true,
   address: {
     building: "Block B 201, HYTEK ARCADE",
+    plotNo: "Plot No. 87 & 88",
     streetAddress: "Plot No. 87 & 88, Block B 201, HYTEK ARCADE, Kancha Gachibowli Road",
     locality: "Nallagandla, Serilingampalle (M)",
     city: "Hyderabad",
     state: "Telangana",
     pincode: "500046",
-    fullAddress: "Plot No. 87 & 88, Block B 201, HYTEK ARCADE, Kancha Gachibowli Road, Nallagandla, Serilingampalle (M), Hyderabad, Telangana 500046, India",
+    fullAddress: "Plot No. 87 & 88, Block B 201, HYTEK ARCADE, Kancha Gachibowli Road, Nallagandla, Hyderabad, Telangana 500046, India",
     landmark: "HYTEK ARCADE, Kancha Gachibowli Road, near Aparna Sarovar, opposite Spice Kitchen",
+  },
+  geo: {
+    latitude: 17.472714,
+    longitude: 78.315582,
   },
   phone: "+917569979965",
   formattedPhone: "+91 75699 79965",
@@ -119,7 +131,7 @@ export const NALLAGANDLA_BRANCH: BranchLocationData = {
     {
       id: "fn1",
       question: "Where is AM Unisex Salon Nallagandla located?",
-      answer: "AM Unisex Salon Nallagandla is located at Plot No. 87 & 88, Block B 201, HYTEK ARCADE, Kancha Gachibowli Road, Nallagandla, Serilingampalle (M), Hyderabad, Telangana 500046, India. Landmark: HYTEK ARCADE, near Aparna Sarovar, opposite Spice Kitchen.",
+      answer: "AM Unisex Salon Nallagandla is located at Plot No. 87 & 88, Block B 201, HYTEK ARCADE, Kancha Gachibowli Road, Nallagandla, Hyderabad, Telangana 500046, India. Landmark: HYTEK ARCADE, near Aparna Sarovar, opposite Spice Kitchen.",
     },
     {
       id: "fn2",
@@ -144,7 +156,7 @@ export const NALLAGANDLA_BRANCH: BranchLocationData = {
     {
       id: "fn6",
       question: "Does AM Unisex Salon have another branch in Hyderabad?",
-      answer: "Yes. AM Unisex Salon operates two physical branches in Hyderabad under the same business: our primary branch in Nallagandla (HYTEK ARCADE) and our second branch in Pragathi Nagar (Near Shiva Medicals, 3rd Layout). Both branches offer identical high standards of hygiene, authentic products, and experienced master stylists.",
+      answer: "Yes. AM Unisex Salon operates two physical branches in Hyderabad under the same business: our primary branch in Nallagandla (HYTEK ARCADE) and our second branch in Pragathi Nagar (6-300012, near Shiva Medicals, 3rd Layout). Both branches offer identical high standards of hygiene, authentic products, and experienced master stylists.",
     },
   ],
 };
@@ -152,17 +164,23 @@ export const NALLAGANDLA_BRANCH: BranchLocationData = {
 export const PRAGATHI_NAGAR_BRANCH: BranchLocationData = {
   id: "pragathi-nagar",
   name: "AM Unisex Salon — Pragathi Nagar",
+  listingName: "Am Akshai Unisex Salon",
   shortName: "Pragathi Nagar",
   tagline: "Unisex Family Salon in Pragathi Nagar, Kukatpally",
   isPrimary: false,
   address: {
-    streetAddress: "Near Shiva Medicals, 3rd Layout, Pragathi Nagar",
+    doorNo: "6-300012",
+    streetAddress: "6-300012, near Shiva Medicals, 3rd Layout, Pragathi Nagar",
     locality: "Pragathi Nagar",
     city: "Hyderabad",
     state: "Telangana",
     pincode: "500090",
-    fullAddress: "Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India",
+    fullAddress: "6-300012, near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India",
     landmark: "Near Shiva Medicals, 3rd Layout",
+  },
+  geo: {
+    latitude: 17.5165991,
+    longitude: 78.3892702,
   },
   phone: "+917569979965",
   formattedPhone: "+91 75699 79965",
@@ -170,8 +188,9 @@ export const PRAGATHI_NAGAR_BRANCH: BranchLocationData = {
   hours: "Monday–Sunday: 9:00 AM–9:00 PM",
   opens: "09:00",
   closes: "21:00",
-  googleMapsPlaceUrl: "https://maps.google.com/?cid=14103202395395251575",
-  googleMapsDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=17.5165991,78.3892702",
+  placeId: "ChIJDZFPymePyzsR0XnQiH8WQk4",
+  googleMapsPlaceUrl: "https://www.google.com/maps/search/?api=1&query=Am+Akshai+Unisex+Salon+Pragathi+Nagar&query_place_id=ChIJDZFPymePyzsR0XnQiH8WQk4",
+  googleMapsDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=17.5165991,78.3892702&destination_place_id=ChIJDZFPymePyzsR0XnQiH8WQk4",
   googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.8105574518427!2d78.3892702!3d17.5165991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91c53e8e2d45%3A0xc3b8a3db4cf8dd77!2sAkshai%20Unisex%20Salon!5e0!3m2!1sen!2sin!4v1700000000000",
   canonicalPath: "/locations/pragathi-nagar",
   seoTitle: "AM Unisex Salon Pragathi Nagar | Unisex Salon in Pragathi Nagar Hyderabad",
@@ -190,7 +209,7 @@ export const PRAGATHI_NAGAR_BRANCH: BranchLocationData = {
     {
       id: "fp1",
       question: "Where is AM Unisex Salon Pragathi Nagar located?",
-      answer: "AM Unisex Salon Pragathi Nagar is located Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India.",
+      answer: "AM Unisex Salon Pragathi Nagar (Am Akshai Unisex Salon) is located at 6-300012, near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad, Telangana 500090, India.",
     },
     {
       id: "fp2",
@@ -205,7 +224,7 @@ export const PRAGATHI_NAGAR_BRANCH: BranchLocationData = {
     {
       id: "fp4",
       question: "Does AM Unisex Salon have another branch in Hyderabad?",
-      answer: "Yes, AM Unisex Salon also operates our primary branch in Nallagandla at HYTEK ARCADE, Kancha Gachibowli Road. You can visit or book at either branch based on your location.",
+      answer: "Yes, AM Unisex Salon also operates our primary branch in Nallagandla at Plot No. 87 & 88, Block B 201, HYTEK ARCADE, Kancha Gachibowli Road. You can visit or book at either branch based on your location.",
     },
   ],
 };

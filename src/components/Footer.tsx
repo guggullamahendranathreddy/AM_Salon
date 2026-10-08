@@ -234,7 +234,7 @@ export default function Footer({ onNavigate }: FooterProps = {}) {
                 </span>
               </div>
               <p className="text-luxury-cream/70 text-[11px] leading-relaxed">
-                Near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad 500090
+                6-300012, near Shiva Medicals, 3rd Layout, Pragathi Nagar, Hyderabad 500090
               </p>
               <div className="flex items-center gap-3 pt-1 text-[11px]">
                 <a
